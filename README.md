@@ -18,6 +18,38 @@
 
 ---
 
+## 📸 Platform User Interface & Live Screenshots
+
+### 1. 🛡️ Security Operations Dashboard & Telemetry
+Real-time posture assessment, CVSS severity distribution, active scans telemetry, and attack surface metrics.
+![Security Operations Dashboard](docs/screenshots/01_dashboard.png)
+
+### 2. 🤖 AI SecOps Copilot & Static Code Auditor (SAST)
+Interactive cybersecurity analyst, real-time code vulnerability auditor, and ML EPSS threat velocity predictor.
+![AI SecOps Copilot & Code Auditor](docs/screenshots/05_ai_copilot.png)
+
+### 3. ⚡ Vulnerability Assessment & Safe DAST Engine
+Detailed CWE vulnerability findings, technical canary probe evidence, and on-demand DAST testbed.
+![Vulnerability Assessment](docs/screenshots/03_vulnerability_assessment.png)
+
+### 4. 🧠 Multi-Framework AI Remediation & Code Patch Synthesizer
+Generates production-ready, copy-pasteable patches (Python, Node.js, Nginx WAF) with root-cause analysis.
+![AI Remediation & Patch Synthesizer](docs/screenshots/04_ai_remediation_modal.png)
+
+### 5. 🎯 Authorized Scope & Target Inventory
+SSRF guardrails, domain ownership verification, and scope allowlisting.
+![Target Management](docs/screenshots/02_targets.png)
+
+### 6. 📖 Operator Field Guide (Interactive How-To)
+Built-in 5-section operational manual covering quickstart workflows, modular scanners, AI tools, and keyboard shortcuts.
+![Operator Field Guide](docs/screenshots/06_how_to_use_guide.png)
+
+### 7. 📄 Executive & Technical PDF Reports Archive
+One-click ReportLab PDF compiler for CISO briefings and compliance documentation.
+![Reports Archive](docs/screenshots/07_reporting_pdf.png)
+
+---
+
 ## 🛠️ Technology Stack
 
 VulnScan is engineered with modern cybersecurity, asynchronous web infrastructure, and data visualization tools:
