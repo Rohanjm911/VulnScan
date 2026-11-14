@@ -72,8 +72,8 @@ Modern enterprise web applications are frequently exposed to complex attack surf
 | **React** | Core Framework | [![React](https://img.shields.io/badge/React_18-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://react.dev) | High-performance SPA command-center dashboard |
 | **TypeScript** | Language | [![TypeScript](https://img.shields.io/badge/TypeScript_5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org) | Strict type contracts and interface guarantees |
 | **Vite** | Build Tool | [![Vite](https://img.shields.io/badge/Vite_5-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev) | Instantaneous HMR and optimized production bundling |
-| **Tailwind CSS** | Styling System | [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_3-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com) | Futuristic dark-mode cybersecurity palette |
-| **Framer Motion** | Motion Engine | [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion) | Hardware-accelerated UI transitions and modal animations |
+| **Tailwind CSS** | Styling System | [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_3-06B6D4?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com) | Professional flat dark design (zero neon glow, solid matte surfaces) |
+| **Framer Motion** | Motion Engine | [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion) | Smooth UI transitions and modal animations |
 | **Recharts** | Data Visualization | [![Recharts](https://img.shields.io/badge/Recharts-22B5BF?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://recharts.org) | Posture trajectories and severity distribution charts |
 | **Lucide Icons** | Iconography | [![Lucide Icons](https://img.shields.io/badge/Lucide_Icons-F56565?style=for-the-badge&logo=feather&logoColor=white)](https://lucide.dev) | Modern cybersecurity icon library |
 
@@ -341,11 +341,11 @@ VulnScan/
 └── frontend/
     ├── Dockerfile                 # Frontend containerization spec
     ├── package.json               # Node.js dependencies & scripts
-    ├── tailwind.config.js         # Theme styling & color palette configuration
+    ├── tailwind.config.js         # Theme styling & flat design palette configuration
     ├── vite.config.ts             # Vite bundler & reverse proxy configuration
     └── src/
         ├── App.tsx                # Master UI layout & watchdog beacon
-        ├── index.css              # Cyber glassmorphism styling
+        ├── index.css              # Professional flat dark styling (matte surfaces, zero neon glow)
         ├── api/                   # Typed API client with complete backend coverage
         ├── components/            # Reusable UI widgets, badges, dials & modals
         └── pages/                 # Full dashboard workspaces:
@@ -385,7 +385,14 @@ start_server.bat
 - **Auto-Shutdown on Browser Close:** Closing your browser window triggers an automated heartbeat watchdog (`navigator.sendBeacon('/api/v1/shutdown')`) that cleanly frees ports `8000` and `3000`.
 - *(Manual stop: Double-click `stop_server.bat` anytime)*
 
-### Option 2: Manual Terminal Execution
+### Option 2: Live Development Launch with Terminal Logs
+Double-click `run_dev.bat` in the project root:
+```cmd
+run_dev.bat
+```
+- Launches both FastAPI backend and Vite frontend in dedicated terminal windows displaying live HTTP requests, scan logs, and HMR events.
+
+### Option 3: Manual Terminal Execution
 
 #### 1. Backend Service
 ```bash
