@@ -3,7 +3,7 @@ import React from 'react';
 export const Skeleton: React.FC<{ className?: string }> = ({ className = 'h-4 w-full' }) => {
   return (
     <div
-      className={`animate-pulse rounded-lg bg-slate-800/60 border border-slate-700/20 ${className}`}
+      className={`animate-shimmer rounded-lg bg-slate-800/60 border border-slate-700/20 ${className}`}
     />
   );
 };

@@ -250,8 +250,11 @@ def login_user(username, password):
           {/* Chat History */}
           <div className="flex-1 overflow-y-auto space-y-4 pr-2 text-xs font-sans">
             {messages.map((m, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.2 }}
                 className={`flex gap-3 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'ai' && (
@@ -262,7 +265,7 @@ def login_user(username, password):
                 <div
                   className={`max-w-[78%] rounded-xl p-3.5 leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-blue-600 text-white shadow-md'
                       : 'bg-[#131722] border border-slate-700 text-slate-200'
                   }`}
                 >
@@ -272,7 +275,7 @@ def login_user(username, password):
                     <span>{m.time}</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
             {chatLoading && (
               <div className="flex gap-2 items-center text-xs text-blue-400 font-mono">

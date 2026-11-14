@@ -181,8 +181,17 @@ export const Targets: React.FC<TargetsProps> = ({ onStartScanForTarget }) => {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {targets.map((target) => (
-            <div key={target.id} className="bg-[#111827] border border-[#1e293b] hover:border-slate-600 rounded-lg p-5 flex flex-col justify-between transition-colors">
+          <AnimatePresence>
+            {targets.map((target, idx) => (
+              <motion.div
+                key={target.id}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.25, delay: idx * 0.05 }}
+                className="cyber-card p-5 flex flex-col justify-between"
+              >
               <div>
                 <div className="flex items-start justify-between gap-2 mb-3">
                   <div className="flex items-center gap-2.5">
@@ -268,21 +277,30 @@ export const Targets: React.FC<TargetsProps> = ({ onStartScanForTarget }) => {
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       )}
 
       {/* Add Target Modal */}
       <AnimatePresence>
         {showAddModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ duration: 0.15 }}
-              className="relative w-full max-w-lg bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setShowAddModal(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 320 }}
+              className="relative w-full max-w-lg bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100 z-10"
             >
               <div className="flex items-center justify-between pb-3 border-b border-[#1e293b] mb-4">
                 <div className="flex items-center gap-2">
@@ -386,12 +404,21 @@ export const Targets: React.FC<TargetsProps> = ({ onStartScanForTarget }) => {
       {/* Edit Target Modal */}
       <AnimatePresence>
         {editingTarget && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              className="relative w-full max-w-lg bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+              onClick={() => setEditingTarget(null)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 320 }}
+              className="relative w-full max-w-lg bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100 z-10"
             >
               <div className="flex items-center justify-between pb-3 border-b border-[#1e293b] mb-4">
                 <div className="flex items-center gap-2">

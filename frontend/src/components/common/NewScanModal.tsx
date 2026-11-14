@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Play, X, ShieldAlert, CheckCircle2, AlertTriangle, Crosshair } from 'lucide-react';
 import { Target } from '../../types';
 import { api } from '../../api/client';
@@ -37,8 +37,6 @@ export const NewScanModal: React.FC<NewScanModalProps> = ({
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   const selectedTarget = targets.find((t) => t.id === selectedTargetId);
 
   const handleStartScan = async () => {
@@ -62,13 +60,24 @@ export const NewScanModal: React.FC<NewScanModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.98 }}
-        className="relative w-full max-w-xl bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100"
-      >
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 320 }}
+            className="relative w-full max-w-xl bg-[#111827] border border-[#1e293b] rounded-lg p-6 shadow-2xl text-slate-100 z-10"
+          >
         <div className="flex items-center justify-between pb-4 border-b border-[#1e293b]">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded bg-blue-600/10 text-blue-400 border border-blue-500/20">
@@ -202,7 +211,9 @@ export const NewScanModal: React.FC<NewScanModalProps> = ({
             {loading ? 'Initializing Scan...' : 'Start Assessment'}
           </button>
         </div>
-      </motion.div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };

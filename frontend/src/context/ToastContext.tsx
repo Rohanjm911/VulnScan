@@ -57,20 +57,20 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             };
 
             const borderColors = {
-              success: 'border-emerald-500/40 bg-[#0D1220]/95 shadow-[0_0_20px_rgba(16,185,129,0.15)]',
-              error: 'border-red-500/40 bg-[#0D1220]/95 shadow-[0_0_20px_rgba(239,68,68,0.15)]',
-              warning: 'border-amber-500/40 bg-[#0D1220]/95 shadow-[0_0_20px_rgba(245,158,11,0.15)]',
-              info: 'border-cyan-500/40 bg-[#0D1220]/95 shadow-[0_0_20px_rgba(0,229,255,0.15)]',
+              success: 'border-emerald-600/50 bg-[#111827] shadow-lg',
+              error: 'border-red-600/50 bg-[#111827] shadow-lg',
+              warning: 'border-amber-600/50 bg-[#111827] shadow-lg',
+              info: 'border-blue-600/50 bg-[#111827] shadow-lg',
             };
 
             return (
               <motion.div
                 key={t.id}
-                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                initial={{ opacity: 0, y: 15, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 50, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
-                className={`pointer-events-auto p-3.5 rounded-xl border backdrop-blur-md text-xs text-slate-100 flex items-start gap-3 ${borderColors[t.type]}`}
+                exit={{ opacity: 0, x: 40, scale: 0.95 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+                className={`pointer-events-auto p-3.5 rounded-lg border text-xs text-slate-100 flex items-start gap-3 ${borderColors[t.type]}`}
               >
                 <div className="mt-0.5">{icons[t.type]}</div>
                 <div className="flex-1 min-w-0">

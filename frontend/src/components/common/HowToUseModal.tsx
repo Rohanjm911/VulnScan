@@ -31,17 +31,25 @@ export const HowToUseModal: React.FC<HowToUseModalProps> = ({
 }) => {
   const [activeTab, setActiveTab] = useState<'quickstart' | 'modules' | 'aiml' | 'fx' | 'shortcuts'>('quickstart');
 
-  if (!isOpen) return null;
-
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          className="bg-[#111827] border border-[#1e293b] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative"
-        >
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm"
+            onClick={onClose}
+          />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 15 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 320 }}
+            className="bg-[#111827] border border-[#1e293b] rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative z-10"
+          >
           {/* Header */}
           <div className="p-4 border-b border-[#1e293b] bg-[#0d121f] flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -223,8 +231,9 @@ export const HowToUseModal: React.FC<HowToUseModalProps> = ({
               Got It
             </button>
           </div>
-        </motion.div>
-      </div>
+          </motion.div>
+        </div>
+      )}
     </AnimatePresence>
   );
 };

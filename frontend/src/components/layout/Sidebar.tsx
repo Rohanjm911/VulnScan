@@ -147,7 +147,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             );
           }
 
-          // Expanded Mode: Clean flat row
+          // Expanded Mode: Clean flat row with smooth gliding pill transition
           return (
             <button
               key={item.id}
@@ -155,14 +155,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 setCurrentTab(item.id);
                 setIsMobileOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
+              className={`relative w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
                 isActive
-                  ? 'bg-blue-600 text-white font-semibold'
+                  ? 'text-white font-semibold'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-[#1e293b]'
               }`}
             >
-              <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-              <span className="truncate">{item.label}</span>
+              {isActive && (
+                <motion.div
+                  layoutId="activeSidebarIndicator"
+                  className="absolute inset-0 bg-blue-600 rounded-lg -z-0"
+                  transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                />
+              )}
+              <Icon className={`relative z-10 w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+              <span className="relative z-10 truncate">{item.label}</span>
             </button>
           );
         })}

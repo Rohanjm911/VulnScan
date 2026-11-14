@@ -42,6 +42,25 @@ interface DashboardProps {
   onOpenNewScan: () => void;
 }
 
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.06,
+    },
+  },
+};
+
+const cardItem = {
+  hidden: { opacity: 0, y: 12 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
+  },
+};
+
 export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan }) => {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
@@ -88,13 +107,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
       className="space-y-6"
     >
       {/* Quick Action Command Strip */}
-      <div className="p-4 rounded-lg bg-[#111827] border border-[#1e293b] flex flex-wrap items-center justify-between gap-4">
+      <motion.div variants={cardItem} className="p-4 rounded-lg bg-[#111827] border border-[#1e293b] flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <div className="p-2.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Zap className="w-5 h-5" />
@@ -125,12 +144,12 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
             <span>Launch Scan</span>
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Top Posture Overview Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Security Score Card */}
-        <div className="cyber-card p-5 flex items-center justify-between">
+        <motion.div variants={cardItem} className="cyber-card p-5 flex items-center justify-between">
           <div>
             <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
               Security Score
@@ -145,10 +164,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
             </p>
           </div>
           <SecurityScoreGauge score={stats?.overall_score || 100} size={84} />
-        </div>
+        </motion.div>
 
         {/* Total Targets */}
-        <div className="cyber-card p-5 flex items-center justify-between">
+        <motion.div variants={cardItem} className="cyber-card p-5 flex items-center justify-between">
           <div>
             <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
               Authorized Targets
@@ -167,10 +186,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
           <div className="p-3.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Crosshair className="w-6 h-6" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Scans Executed */}
-        <div className="cyber-card p-5 flex items-center justify-between">
+        <motion.div variants={cardItem} className="cyber-card p-5 flex items-center justify-between">
           <div>
             <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
               Scans Executed
@@ -186,10 +205,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
           <div className="p-3.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Activity className="w-6 h-6" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Total Findings */}
-        <div className="cyber-card p-5 flex items-center justify-between">
+        <motion.div variants={cardItem} className="cyber-card p-5 flex items-center justify-between">
           <div>
             <span className="text-[11px] font-mono uppercase text-slate-400 tracking-wider">
               Vulnerabilities
@@ -209,7 +228,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
           <div className="p-3.5 rounded-xl bg-red-500/10 text-red-400 border border-red-500/20">
             <AlertOctagon className="w-6 h-6" />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Visual Analytics Grid */}
