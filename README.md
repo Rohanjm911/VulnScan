@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![VulnScan Banner](https://img.shields.io/badge/VULNSCAN-Cybersecurity%20Auditing-00E5FF?style=for-the-badge&logo=shield&logoColor=black)
+![VulnScan Badge](https://img.shields.io/badge/VULNSCAN-SecOps%20Platform-2563EB?style=for-the-badge&logo=shield&logoColor=white)
 
 **Automated Web Vulnerability Assessment, AI/ML Posture Intelligence & Safe DAST Engine**
 
