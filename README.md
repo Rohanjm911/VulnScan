@@ -49,6 +49,14 @@ Built-in 5-section operational manual covering quickstart workflows, modular sca
 One-click ReportLab PDF compiler for CISO briefings and compliance documentation.
 ![Reports Archive](docs/screenshots/07_reporting_pdf.png)
 
+### 8. 🌐 API Security & OpenAPI / Swagger Auditor
+Automated OWASP API Top 10 analysis detecting BOLA/IDOR (API1), Broken Authentication (API2), and sensitive query leaks.
+![API Security Auditor](docs/screenshots/08_api_security.png)
+
+### 9. 🏛️ Regulatory Compliance Matrix & Benchmarks
+Real-time control cross-mapping against SOC 2 Type II, ISO/IEC 27001:2022, PCI-DSS v4.0, and HIPAA Security Rule.
+![Compliance Matrix](docs/screenshots/09_compliance_matrix.png)
+
 ---
 
 ## 🛡️ Executive Overview & Problem Statement
