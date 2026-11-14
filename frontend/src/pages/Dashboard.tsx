@@ -65,16 +65,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
     return () => clearInterval(interval);
   }, []);
 
-  // Synthetic trend points based on recent scores
+  // Real historical trend points based on actual completed scans
   const trendData = stats?.recent_scans && stats.recent_scans.length > 0
-    ? [...stats.recent_scans].reverse().map((s, idx) => ({
+    ? [...stats.recent_scans].reverse().map((s) => ({
         name: `Scan #${s.id}`,
         score: s.security_score,
       }))
-    : [
-        { name: 'Baseline', score: 85 },
-        { name: 'Scan #1', score: 68 },
-      ];
+    : [];
 
   if (loading && !stats) {
     return (
@@ -269,27 +266,34 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
             <p className="text-xs text-slate-400">Security score progression across scans</p>
           </div>
           <div className="h-56 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={trendData}>
-                <defs>
-                  <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="name" stroke="#64748B" fontSize={10} tickLine={false} />
-                <YAxis domain={[0, 100]} stroke="#64748B" fontSize={10} tickLine={false} />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#111827',
-                    borderColor: '#1e293b',
-                    borderRadius: '6px',
-                    fontSize: '11px'
-                  }}
-                />
-                <Area type="monotone" dataKey="score" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#scoreGradient)" />
-              </AreaChart>
-            </ResponsiveContainer>
+            {trendData.length === 0 ? (
+              <div className="h-full flex flex-col items-center justify-center text-center p-6 text-slate-500 text-xs font-mono">
+                <TrendingUp className="w-8 h-8 text-slate-600 mb-2" />
+                <span>No scan runs yet. Launch your first security scan to plot the live posture trajectory.</span>
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={trendData}>
+                  <defs>
+                    <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <XAxis dataKey="name" stroke="#64748B" fontSize={10} tickLine={false} />
+                  <YAxis domain={[0, 100]} stroke="#64748B" fontSize={10} tickLine={false} />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: '#111827',
+                      borderColor: '#1e293b',
+                      borderRadius: '6px',
+                      fontSize: '11px'
+                    }}
+                  />
+                  <Area type="monotone" dataKey="score" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#scoreGradient)" />
+                </AreaChart>
+              </ResponsiveContainer>
+            )}
           </div>
         </div>
       </div>

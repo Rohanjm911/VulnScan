@@ -48,4 +48,8 @@ htmlcov/
 .env
 .DS_Store
 Thumbs.db
+
+# Generated Scan Reports
+backend/reports/*.pdf
+reports/*.pdf
 desktop.ini

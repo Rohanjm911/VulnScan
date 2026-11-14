@@ -1,5 +1,6 @@
 import socket
 import re
+import concurrent.futures
 import dns.resolver
 import httpx
 from typing import Dict, Any, List
@@ -9,23 +10,33 @@ COMMON_SUBDOMAINS = [
     "admin", "portal", "vpn", "cdn", "beta", "auth", "status"
 ]
 
+def _resolve_single_record(domain: str, rtype: str, timeout: float = 2.0) -> tuple[str, List[str]]:
+    results: List[str] = []
+    try:
+        resolver = dns.resolver.Resolver()
+        resolver.timeout = timeout
+        resolver.lifetime = timeout
+        answers = resolver.resolve(domain, rtype)
+        for rdata in answers:
+            results.append(str(rdata))
+    except Exception:
+        pass
+    return rtype, results
+
 def analyze_dns_records(domain: str) -> Dict[str, List[str]]:
-    """Resolves DNS records for A, AAAA, MX, NS, TXT, CNAME, SOA."""
+    """Resolves DNS records for A, AAAA, MX, NS, TXT, CNAME, SOA in parallel."""
     records: Dict[str, List[str]] = {
         "A": [], "AAAA": [], "MX": [], "NS": [], "TXT": [], "CNAME": [], "SOA": []
     }
     
-    resolver = dns.resolver.Resolver()
-    resolver.timeout = 2.0
-    resolver.lifetime = 2.0
-
-    for rtype in records.keys():
-        try:
-            answers = resolver.resolve(domain, rtype)
-            for rdata in answers:
-                records[rtype].append(str(rdata))
-        except Exception:
-            pass
+    with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
+        futures = [executor.submit(_resolve_single_record, domain, rtype, 2.0) for rtype in records.keys()]
+        for future in concurrent.futures.as_completed(futures):
+            try:
+                rtype, res = future.result()
+                records[rtype] = res
+            except Exception:
+                pass
             
     # Fallback for standard A record if dnspython couldn't query DNS server
     if not records["A"]:
@@ -37,24 +48,31 @@ def analyze_dns_records(domain: str) -> Dict[str, List[str]]:
 
     return records
 
+def _check_subdomain(candidate: str) -> Dict[str, str] | None:
+    try:
+        ip = socket.gethostbyname(candidate)
+        return {
+            "subdomain": candidate,
+            "ip": ip,
+            "status": "active"
+        }
+    except Exception:
+        return None
+
 def discover_subdomains(domain: str) -> List[Dict[str, str]]:
-    """Checks common subdomains for DNS resolution within target scope."""
+    """Checks common subdomains for DNS resolution within target scope in parallel."""
     discovered = []
-    # Strip any subdomains if target is already subdomain
     parts = domain.split(".")
     base_domain = ".".join(parts[-2:]) if len(parts) > 2 else domain
 
-    for sub in COMMON_SUBDOMAINS:
-        candidate = f"{sub}.{base_domain}"
-        try:
-            ip = socket.gethostbyname(candidate)
-            discovered.append({
-                "subdomain": candidate,
-                "ip": ip,
-                "status": "active"
-            })
-        except Exception:
-            continue
+    candidates = [f"{sub}.{base_domain}" for sub in COMMON_SUBDOMAINS]
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        results = executor.map(_check_subdomain, candidates)
+        for item in results:
+            if item:
+                discovered.append(item)
+
     return discovered
 
 async def fingerprint_technology(target_url: str) -> Dict[str, Any]:

@@ -36,9 +36,9 @@ export const Topbar: React.FC<TopbarProps> = ({
   const [showHowToUse, setShowHowToUse] = useState(false);
 
   const notifications = [
-    { id: 1, title: 'Engine Policy Enforced', time: 'Just now', type: 'info', text: 'SSRF guard active across all scanners.' },
-    { id: 2, title: 'Demonstration Lab Active', time: '5m ago', type: 'success', text: 'OWASP Juice Shop target ready for audit.' },
-    { id: 3, title: 'Automated Threat Intel', time: '1h ago', type: 'warning', text: 'CVE Knowledge Base loaded with 6 signatures.' },
+    { id: 1, title: 'Engine Policy Enforced', time: 'Active', type: 'info', text: 'SSRF guard & safe socket limits active.' },
+    { id: 2, title: 'Live Scanning Engine', time: 'Ready', type: 'success', text: 'Real-time DAST, port probing, and SSL handshakes ready.' },
+    { id: 3, title: 'Threat Intelligence Core', time: 'Active', type: 'info', text: 'CVE database & ML EPSS model online.' },
   ];
 
   const tabTitles: Record<string, { title: string; subtitle: string }> = {

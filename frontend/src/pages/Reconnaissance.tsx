@@ -30,7 +30,12 @@ export const Reconnaissance: React.FC = () => {
   const { success, error: toastError } = useToast();
 
   useEffect(() => {
-    api.getTargets().then(setTargets).catch(() => {});
+    api.getTargets().then((tList) => {
+      setTargets(tList);
+      if (tList.length > 0 && targetUrl === 'https://example.com') {
+        setTargetUrl(tList[0].url);
+      }
+    }).catch(() => {});
   }, []);
 
   const handleInspect = async (e: React.FormEvent) => {
@@ -74,6 +79,7 @@ export const Reconnaissance: React.FC = () => {
               <span>Select Authorized Target:</span>
             </span>
             <select
+              value={targetUrl}
               onChange={(e) => setTargetUrl(e.target.value)}
               className="px-2.5 py-1 rounded bg-[#0d121f] border border-[#1e293b] text-slate-200 text-xs focus:border-blue-500 focus:outline-none"
             >

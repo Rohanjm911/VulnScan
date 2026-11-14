@@ -64,7 +64,7 @@ import threading
 last_heartbeat_time = time.time()
 has_received_heartbeat = False
 shutdown_scheduled = False
-auto_shutdown_enabled = os.getenv("AUTO_SHUTDOWN", "true").lower() in ("true", "1", "yes")
+auto_shutdown_enabled = os.getenv("AUTO_SHUTDOWN", "false").lower() in ("true", "1", "yes")
 
 @app.get("/api/v1/heartbeat")
 @app.post("/api/v1/heartbeat")
@@ -76,6 +76,8 @@ def record_heartbeat():
     return {"status": "alive", "timestamp": last_heartbeat_time}
 
 def execute_server_exit():
+    if not auto_shutdown_enabled:
+        return
     time.sleep(1.0)
     try:
         # Free ports on Windows
@@ -87,6 +89,8 @@ def execute_server_exit():
 @app.post("/api/v1/shutdown")
 def receive_shutdown_signal():
     global shutdown_scheduled
+    if not auto_shutdown_enabled:
+        return {"status": "auto_shutdown_disabled"}
     shutdown_scheduled = True
 
     def delayed_exit_check():
@@ -114,9 +118,11 @@ if auto_shutdown_enabled:
     threading.Thread(target=background_heartbeat_watchdog, daemon=True).start()
 
 
-# Seed initial demonstration target & scan if empty
+# Seed initial demonstration target & scan only if explicitly requested via SEED_DEMO_DATA=true
 @app.on_event("startup")
 def seed_demo_data():
+    if os.getenv("SEED_DEMO_DATA", "false").lower() not in ("true", "1", "yes"):
+        return
     db = SessionLocal()
     try:
         if db.query(Target).count() == 0:

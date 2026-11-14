@@ -15,13 +15,21 @@ import {
 const API_BASE = '/api/v1';
 
 async function request<T>(endpoint: string, options?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    headers: {
-      'Content-Type': 'application/json',
-      ...options?.headers,
-    },
-    ...options,
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${API_BASE}${endpoint}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        ...options?.headers,
+      },
+      ...options,
+    });
+  } catch (err: any) {
+    if (err?.name === 'TypeError' || err?.message?.includes('fetch')) {
+      throw new Error('Backend server is currently unreachable. Please check if the backend service is running on port 8000.');
+    }
+    throw err;
+  }
 
   if (!res.ok) {
     let errorDetail = `HTTP ${res.status}`;

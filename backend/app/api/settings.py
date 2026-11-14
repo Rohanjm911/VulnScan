@@ -43,15 +43,13 @@ def list_audit_logs(db: Session = Depends(get_db)):
     return logs
 
 @router.post("/reset-demo")
-def reset_demo_data(db: Session = Depends(get_db)):
+def clear_all_data(db: Session = Depends(get_db)):
     from app.models import Target, Scan, Finding, ScanLog
-    from app.main import seed_demo_data
     db.query(Finding).delete()
     db.query(ScanLog).delete()
     db.query(Scan).delete()
     db.query(Target).delete()
     db.commit()
-    seed_demo_data()
-    return {"message": "Database reset and demonstration test lab reseeded successfully."}
+    return {"message": "All database targets, scans, and findings cleared successfully for a pristine real-data environment."}
 
 

@@ -47,7 +47,7 @@ export const Settings: React.FC = () => {
   };
 
   const handleResetDemo = async () => {
-    if (!confirm('This will reset the database and reseed demonstration findings and logs. Proceed?')) {
+    if (!confirm('This will wipe all historical targets, scans, and findings to start completely fresh with real data. Proceed?')) {
       return;
     }
     try {
@@ -92,7 +92,7 @@ export const Settings: React.FC = () => {
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 text-xs font-mono transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset Demo Testbed</span>
+            <span>Clear Target & Scan Data</span>
           </button>
         </div>
 
