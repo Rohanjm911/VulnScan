@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Logo } from '../common/Logo';
 import { 
   LayoutDashboard, 
   Crosshair, 
@@ -70,13 +71,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className={`h-16 flex items-center border-b border-[#1e293b] px-4 ${
         isExpanded ? 'justify-between' : 'justify-center'
       }`}>
-        <div className="flex items-center gap-3 overflow-hidden">
-          <div 
-            className="p-2 rounded-lg bg-blue-600/10 border border-blue-500/20 text-blue-400 flex-shrink-0 cursor-pointer"
-            onClick={() => !isExpanded && setCollapsed(false)}
-            title="Expand Sidebar"
-          >
-            <ShieldCheck className="w-5 h-5 text-blue-400" />
+        <div 
+          className="flex items-center gap-3 overflow-hidden cursor-pointer"
+          onClick={() => !isExpanded && setCollapsed(false)}
+          title={!isExpanded ? "Expand Sidebar" : undefined}
+        >
+          <div className="flex-shrink-0">
+            <Logo variant="sentinel" size={26} />
           </div>
 
           {isExpanded && (
@@ -87,7 +88,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               className="truncate"
             >
               <span className="text-base font-bold tracking-wide text-white">
-                VULNSCAN
+                VULN<span className="text-blue-500">SCAN</span>
               </span>
               <p className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
                 SecOps Platform
