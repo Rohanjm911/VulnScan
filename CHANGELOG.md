@@ -38,3 +38,4 @@ All notable changes to **VulnScan** are documented in this file.
 - Static application security testing (SAST) and AI SecOps Copilot.
 - Executive & technical PDF report generation using ReportLab.
 - Scope management with strict SSRF & private IP protection.
+

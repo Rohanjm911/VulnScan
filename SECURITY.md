@@ -32,3 +32,4 @@ VulnScan incorporates strict, defense-in-depth safety controls by default:
    - Targets must be explicitly registered and acknowledged with ownership notes before initiating automated pipelines.
 4. **Immutable Audit Logging:**
    - Every initiated scan, port probe, configuration modification, and diagnostic test is logged with UTC timestamp, target URL, origin IP, and action category.
+

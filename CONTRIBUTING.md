@@ -65,3 +65,4 @@ Verify that `tsc && vite build` completes with 0 errors.
 ## ⚖️ Code of Conduct & Ethics
 
 Contributions must adhere to ethical cybersecurity standards. VulnScan is strictly intended for defensive engineering, authorized penetration testing, and compliance verification. Any PR introducing unconstrained offensive payloads or bypassing safety guardrails will be rejected.
+
