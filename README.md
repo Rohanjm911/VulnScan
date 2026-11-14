@@ -85,6 +85,8 @@ Modern enterprise web applications are frequently exposed to complex attack surf
 | **Pydantic** | Data Validation | [![Pydantic](https://img.shields.io/badge/Pydantic_v2-E92063?style=for-the-badge&logo=pydantic&logoColor=white)](https://docs.pydantic.dev) | Strict schema validation and serialization |
 | **SQLAlchemy** | ORM Layer | [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy_2-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org) | Database abstraction, relations, and audit persistence |
 | **ReportLab** | Document Engine | [![ReportLab](https://img.shields.io/badge/ReportLab_PDF-B81728?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://www.reportlab.com) | CISO-grade technical and executive PDF report generator |
+| **HTTPX & dnspython** | Network Engine | [![HTTPX](https://img.shields.io/badge/HTTPX-0.28-1f425f?style=for-the-badge&logo=python&logoColor=white)](https://www.python-httpx.org) | Async network probing, DNS resolving & cloud bucket enumeration |
+| **BeautifulSoup4** | HTML Parser | [![BS4](https://img.shields.io/badge/BeautifulSoup-4.12-2B5B84?style=for-the-badge&logo=python&logoColor=white)](https://beautiful-soup-4.readthedocs.io) | Client DOM crawler & script bundle asset extraction |
 
 ### 🧠 AI & Machine Learning Intelligence Core
 | Technology | Category | Official Badge & Logo | Capability |
@@ -93,6 +95,13 @@ Modern enterprise web applications are frequently exposed to complex attack surf
 | **NumPy** | Numerical Engine | [![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org) | Vectorized mathematical probability scoring |
 | **Google Gemini API** | Large Language Model | [![Google Gemini](https://img.shields.io/badge/Google_Gemini_SDK-8E75B2?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev) | Multi-turn SecOps Copilot & deep architectural analysis |
 | **Adaptive WAF Mutator** | Heuristic Security | [![AI Mutator](https://img.shields.io/badge/Adaptive_WAF_Mutator-A855F7?style=for-the-badge&logo=openai&logoColor=white)](#) | Filter evasion synthesis for DAST testing |
+
+### 🔔 SecOps Integrations & Webhooks
+| Integration | Category | Official Badge & Logo | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Discord Webhooks** | Alerting | [![Discord](https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com) | Real-time formatted rich embed cards with score indicators |
+| **Slack Webhooks** | Incident Management | [![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)](https://slack.com) | Structured Block Kit incident cards for SecOps channels |
+| **Generic SIEM** | Log Ingestion | [![SIEM](https://img.shields.io/badge/SIEM_Webhook-00E5FF?style=for-the-badge&logo=splunk&logoColor=black)](#) | Standardized JSON telemetry for Splunk, Datadog & ELK |
 
 ---
 
@@ -138,6 +147,50 @@ Modern enterprise web applications are frequently exposed to complex attack surf
 
 ### 8. CVE Intelligence Hub
 - Automatically cross-references fingerprinted software banners (e.g., `Apache/2.4.49`, `OpenSSL/1.0.2`, `PHP/7.4.3`) against an indexed CVE database with official CVSS scores and Mitre/NVD references.
+
+### 9. API Security & OpenAPI / Swagger Auditor
+- Static and runtime audit of OpenAPI 3.0+ and Swagger 2.0 specifications against the OWASP API Security Top 10:
+  - **API1:2023 Broken Object Level Authorization (BOLA / IDOR):** Identifies endpoint parameters containing object identifiers (`{user_id}`, `{id}`, `{account}`) lacking explicit authentication scopes.
+  - **API2:2023 Broken Authentication:** Detects administrative or mutative routes accessible without OAuth2/Bearer or API key scopes.
+  - **API4:2023 Unrestricted Resource Consumption:** Flags collection listing endpoints missing pagination parameters (`limit`, `offset`, `page`).
+  - **Sensitive Query Leaks:** Flags query parameters passing authentication credentials (`api_key`, `token`, `secret`) in cleartext URLs.
+
+### 10. Subdomain Takeover & Cloud Bucket Leak Scanner
+- **Dangling CNAME Verification:** Probes active DNS canonical name records for abandoned third-party SaaS hosting pointers susceptible to subdomain takeover:
+  - GitHub Pages (`github.io`)
+  - AWS S3 Buckets (`s3.amazonaws.com`)
+  - Heroku (`herokuapp.com`)
+  - Shopify (`myshopify.com`)
+  - Surge.sh (`surge.sh`)
+  - Fastly CDN (`fastly.net`)
+- **Public Cloud Storage Scanner:** Evaluates bucket name permutations against AWS S3 and Google Cloud Storage (GCS) to detect unauthenticated XML object listings.
+
+### 11. Regulatory Compliance Auditor & Benchmark Matrix
+- Continuously cross-maps active vulnerability findings and missing defensive controls against 4 premier compliance frameworks:
+  - **SOC 2 Type II:** AICPA Trust Services Criteria CC6.1 (Logical Access), CC6.6 (Boundary Protection), CC6.8 (Vulnerability Remediation), CC7.1 (Transmission Cryptography).
+  - **ISO/IEC 27001:2022:** Controls A.8.8 (Technical Vulnerability Management), A.8.20 (Network Security), A.8.24 (Use of Cryptography).
+  - **PCI-DSS v4.0:** Requirements 6.4.1 (Web Application Firewalls & Injection Defense), 4.1.2 (Strong Cryptography & TLS), 11.3.1 (External Penetration Testing).
+  - **HIPAA Security Rule:** 45 CFR § 164.312(a)(1) (Access Control), § 164.312(e)(1) (Transmission Security).
+- Computes readiness percentages, passed/total control metrics, and lists specific violating findings.
+
+### 12. Client-Side Secrets & Leaked API Key Detector
+- Deep-crawls target web pages and client JavaScript bundles to identify hardcoded credentials before adversaries find them:
+  - OpenAI & Anthropic Secret Keys (`sk-[a-zA-Z0-9]{20,50}`)
+  - AWS IAM Access Key IDs (`AKIA...`)
+  - Stripe Live Secret Keys (`sk_live_...`)
+  - GitHub Personal Access Tokens (`ghp_...`)
+  - Google Cloud / Firebase API Keys (`AIza...`)
+  - Slack Bot / User Tokens (`xox[baprs]-...`)
+  - Private RSA / PGP Cryptographic Keys
+- Automatically masks sensitive token values and provides immediate key-revocation checklists.
+
+### 13. Scheduled Automated Scans & Webhook Alerts
+- Configurable background recurring scanning (Hourly, Daily, Weekly) across all authorized targets.
+- **Enterprise Webhook Integrations:**
+  - **Discord:** Color-coded rich embed cards with security score gauges, critical threat counts, and action advisories.
+  - **Slack:** Structured Block Kit messages formatted for security team incident triage channels.
+  - **Custom SIEM:** Standardized JSON event payloads for Splunk, Elastic SIEM, and Datadog ingestion.
+- Built-in one-click "Test Ping" delivery verification.
 
 ---
 
@@ -187,6 +240,16 @@ Where:
 | **A05:2021 — Security Misconfiguration** | Missing CSP/X-Frame-Options headers, exposed server banners, default open ports | Header Analyzer & Port Scanner |
 | **A06:2021 — Vulnerable & Outdated Components** | Fingerprint correlation with known CVE databases & EPSS threat velocity | CVE Intelligence Hub & AI Engine |
 
+### 🛡️ OWASP API Security Top 10 (2023) Coverage Matrix
+
+| OWASP API Category | Vulnerability Mechanism & Detection | Primary Module |
+| :--- | :--- | :--- |
+| **API1:2023 — Broken Object Level Authorization (BOLA / IDOR)** | Static parameter inspection detecting `{id}`, `{user_id}`, `{account}` in resource paths without verified authentication scope | API Security Auditor |
+| **API2:2023 — Broken Authentication** | Detection of sensitive endpoints accessible without Bearer, OAuth2, or API key parameters | API Security Auditor |
+| **API4:2023 — Unrestricted Resource Consumption** | Listing operations lacking pagination constraints (`limit`, `offset`, `page_size`) | API Security Auditor |
+| **API7:2023 — Server-Side Request Forgery (SSRF)** | Enforced private IP CIDR blacklisting (`127.0.0.0/8`, `10.0.0.0/8`, `192.168.0.0/16`, AWS metadata `169.254.169.254`) | Target Manager & Network Guard |
+| **Sensitive Data Exposure in URI** | Cleartext credential inspection flagging `api_key`, `secret`, `token` passed in query parameters | API Security Auditor |
+
 ---
 
 ## 📡 REST API Reference
@@ -207,6 +270,16 @@ Where:
 | `POST` | `/api/v1/vulnerabilities/test-sqli` | Non-destructive safe SQL injection canary test |
 | `POST` | `/api/v1/vulnerabilities/test-xss` | Non-destructive reflected XSS canary probe |
 | `POST` | `/api/v1/cve/check-banner` | Correlate software version string against CVE database |
+| `POST` | `/api/v1/api-security/audit` | Audit live OpenAPI spec or raw JSON for BOLA/IDOR and auth bypass |
+| `POST` | `/api/v1/cloud-recon/scan` | Check dangling CNAME takeovers and public S3/GCP cloud buckets |
+| `GET` | `/api/v1/compliance/matrix` | Evaluate findings against SOC 2, ISO 27001, PCI-DSS, and HIPAA |
+| `POST` | `/api/v1/compliance/audit` | Run targeted compliance readiness audit |
+| `POST` | `/api/v1/secrets/scan` | Crawl target HTML/JS assets for exposed API keys and tokens |
+| `GET` | `/api/v1/schedules` | List configured automated recurring scan schedules |
+| `POST` | `/api/v1/schedules` | Register new recurring scan schedule with webhook alert dispatch |
+| `POST` | `/api/v1/schedules/{id}/toggle` | Toggle schedule active/paused state |
+| `DELETE` | `/api/v1/schedules/{id}` | Remove recurring scan schedule |
+| `POST` | `/api/v1/schedules/test-webhook` | Dispatch immediate test webhook alert to Discord/Slack/SIEM |
 | `POST` | `/api/v1/ai/remediate` | Synthesize multi-language code patch & ML EPSS prediction |
 | `POST` | `/api/v1/ai/audit-code` | SAST code scanner detecting vulnerabilities in source snippets |
 | `POST` | `/api/v1/ai/copilot-chat` | Interactive AI SecOps analyst query endpoint |
@@ -238,6 +311,9 @@ VulnScan/
 │   │   ├── main.py                # FastAPI application entrypoint & watchdog handlers
 │   │   ├── api/                   # Modular REST API endpoints
 │   │   │   ├── ai.py              # AI Copilot, EPSS predictor, SAST auditor
+│   │   │   ├── api_security.py    # OpenAPI / Swagger BOLA/IDOR auditor
+│   │   │   ├── cloud_recon.py     # Subdomain takeover & S3/GCP bucket scanner
+│   │   │   ├── compliance.py      # SOC 2, ISO 27001, PCI-DSS & HIPAA matrix
 │   │   │   ├── cve.py             # CVE intelligence hub
 │   │   │   ├── dashboard.py       # Posture metrics & score telemetry
 │   │   │   ├── findings.py        # Vulnerability inventory & filters
@@ -246,14 +322,22 @@ VulnScan/
 │   │   │   ├── recon.py           # DNS reconnaissance & stack fingerprinting
 │   │   │   ├── reports.py         # PDF compilation & download router
 │   │   │   ├── scans.py           # Pipeline orchestrator & cancel router
+│   │   │   ├── schedules.py       # Automated scan scheduler & webhook router
+│   │   │   ├── secrets.py         # Client-side secrets & API key scanner
 │   │   │   ├── settings.py        # Engine guardrails & audit trails
 │   │   │   ├── ssl.py             # TLS handshake & cipher inspector
 │   │   │   ├── targets.py         # Scope management & SSRF validation
 │   │   │   └── vulnerabilities.py # Safe DAST SQLi/XSS live testbed
-│   │   ├── models/                # Database models (Target, Scan, Finding, AuditLog)
+│   │   ├── models/                # Database models (Target, Scan, Finding, Schedule, AuditLog)
 │   │   ├── schemas/               # Pydantic request/response schemas
 │   │   └── services/              # Core security auditing services & AI engine
-│   └── tests/                     # Automated pytest test suites (100% pass rate)
+│   │       ├── ai_engine.py       # Scikit-Learn EPSS model & Gemini fallback
+│   │       ├── api_security_service.py # OpenAPI AST parser & BOLA auditor
+│   │       ├── cloud_recon_service.py  # CNAME dangling verification & bucket enumerator
+│   │       ├── compliance_service.py   # Regulatory control matrix evaluation
+│   │       ├── secret_scanner_service.py # JavaScript bundle token extractor
+│   │       └── webhook_service.py      # Discord embed & Slack Block Kit dispatcher
+│   └── tests/                     # Automated pytest test suites (14 tests, 100% pass rate)
 └── frontend/
     ├── Dockerfile                 # Frontend containerization spec
     ├── package.json               # Node.js dependencies & scripts
@@ -262,9 +346,26 @@ VulnScan/
     └── src/
         ├── App.tsx                # Master UI layout & watchdog beacon
         ├── index.css              # Cyber glassmorphism styling
-        ├── api/                   # Typed API client
+        ├── api/                   # Typed API client with complete backend coverage
         ├── components/            # Reusable UI widgets, badges, dials & modals
-        └── pages/                 # Full dashboard workspaces (Dashboard, AI Copilot, etc.)
+        └── pages/                 # Full dashboard workspaces:
+            ├── Dashboard.tsx      # Posture analytics & real-time telemetry
+            ├── Targets.tsx        # Scope management & SSRF verification
+            ├── Reconnaissance.tsx # DNS & technology fingerprinting
+            ├── CloudRecon.tsx     # Subdomain takeover & bucket detection
+            ├── PortScanner.tsx    # Controlled TCP port discovery
+            ├── SslAnalyzer.tsx    # TLS cipher & X.509 cert analysis
+            ├── HeaderAnalyzer.tsx # HTTP security header policy grading
+            ├── ApiSecurity.tsx    # OpenAPI / Swagger BOLA/IDOR auditor
+            ├── SecretScanner.tsx  # Client bundle secret & token leaker
+            ├── VulnerabilityAssessment.tsx # Safe DAST SQLi & XSS probers
+            ├── ComplianceMatrix.tsx # SOC2, ISO27001, PCI-DSS & HIPAA
+            ├── Schedules.tsx      # Background scheduler & webhooks
+            ├── AiCopilot.tsx      # Interactive analyst, EPSS & SAST
+            ├── CveIntelligence.tsx# Software banner CVE database
+            ├── ScanHistory.tsx    # Execution logs & timeline
+            ├── Reports.tsx        # Executive PDF archive
+            └── Settings.tsx       # System config & audit logs
 ```
 
 ---
@@ -308,15 +409,16 @@ npm run dev
 ## 🧪 Testing & Verification
 
 ### Run Backend Unit Tests
-VulnScan includes an automated test suite verifying scanner guardrails, SSRF validation, and AI/ML algorithms:
+VulnScan includes an automated test suite verifying scanner guardrails, SSRF validation, advanced OpenAPI / BOLA logic, compliance matrices, and AI/ML algorithms:
 ```bash
 cd backend
 python -m pytest tests/
 ```
 ```text
-tests\test_ai_engine.py .....   [ 62%]
-tests\test_scanner.py ...       [100%]
-============================== 8 passed in 0.85s ==============================
+backend\tests\test_advanced_features.py ......   [ 42%]
+backend\tests\test_ai_engine.py .....            [ 78%]
+backend\tests\test_scanner.py ...                [100%]
+======================= 14 passed in 3.30s =======================
 ```
 
 ### Run Frontend Production Build
@@ -325,11 +427,11 @@ cd frontend
 npm run build
 ```
 ```text
-✓ 2551 modules transformed.
-dist/index.html                   1.17 kB │ gzip:   0.68 kB
-dist/assets/index-DZNhFos5.css   46.80 kB │ gzip:   8.39 kB
-dist/assets/index-XxHvu6iK.js   847.45 kB │ gzip: 232.68 kB
-✓ built in 13.84s
+✓ 2556 modules transformed.
+dist/index.html                   1.18 kB │ gzip:   0.68 kB
+dist/assets/index-BBE68GYr.css   51.02 kB │ gzip:   9.02 kB
+dist/assets/index-CnRr5k7r.js   891.33 kB │ gzip: 240.61 kB
+✓ built in 17.37s
 ```
 
 ---

@@ -17,7 +17,12 @@ import {
   ChevronRight, 
   Radio, 
   X,
-  Bot
+  Bot,
+  Cloud,
+  FileJson,
+  KeyRound,
+  Award,
+  CalendarClock
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -43,10 +48,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
     { id: 'dashboard', label: 'Security Dashboard', icon: LayoutDashboard },
     { id: 'targets', label: 'Target Manager', icon: Crosshair },
     { id: 'recon', label: 'Reconnaissance', icon: Globe2 },
+    { id: 'cloud-recon', label: 'Cloud & Subdomain Takeover', icon: Cloud },
     { id: 'ports', label: 'Port Scanner', icon: Network },
     { id: 'ssl', label: 'SSL/TLS Analyzer', icon: Lock },
     { id: 'headers', label: 'Header Analyzer', icon: FileCode },
+    { id: 'api-sec', label: 'API & OpenAPI Auditor', icon: FileJson },
+    { id: 'secrets', label: 'Secrets & Token Leaks', icon: KeyRound },
     { id: 'vulns', label: 'Vulnerability Assessment', icon: Bug },
+    { id: 'compliance', label: 'Compliance & Benchmarks', icon: Award },
+    { id: 'schedules', label: 'Schedules & Webhooks', icon: CalendarClock },
     { id: 'ai', label: 'AI SecOps Copilot', icon: Bot },
     { id: 'cve', label: 'CVE Intelligence', icon: Database },
     { id: 'history', label: 'Scan History & Logs', icon: History },

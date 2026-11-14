@@ -17,6 +17,11 @@ import { CveIntelligence } from './pages/CveIntelligence';
 import { ScanHistory } from './pages/ScanHistory';
 import { Reports } from './pages/Reports';
 import { Settings } from './pages/Settings';
+import { ApiSecurity } from './pages/ApiSecurity';
+import { CloudRecon } from './pages/CloudRecon';
+import { ComplianceMatrix } from './pages/ComplianceMatrix';
+import { SecretScanner } from './pages/SecretScanner';
+import { Schedules } from './pages/Schedules';
 
 export function AppContent() {
   const [currentTab, setCurrentTab] = useState<string>('dashboard');
@@ -115,10 +120,15 @@ export function AppContent() {
                 <Targets onStartScanForTarget={handleStartScanForTarget} />
               )}
               {currentTab === 'recon' && <Reconnaissance />}
+              {currentTab === 'cloud-recon' && <CloudRecon />}
               {currentTab === 'ports' && <PortScanner />}
               {currentTab === 'ssl' && <SslAnalyzer />}
               {currentTab === 'headers' && <HeaderAnalyzer />}
+              {currentTab === 'api-sec' && <ApiSecurity />}
+              {currentTab === 'secrets' && <SecretScanner />}
               {currentTab === 'vulns' && <VulnerabilityAssessment />}
+              {currentTab === 'compliance' && <ComplianceMatrix />}
+              {currentTab === 'schedules' && <Schedules />}
               {currentTab === 'ai' && <AiCopilot />}
               {currentTab === 'cve' && <CveIntelligence />}
               {currentTab === 'history' && <ScanHistory />}

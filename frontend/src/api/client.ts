@@ -1,4 +1,16 @@
-import { DashboardStats, Target, Scan, Finding, CveItem } from '../types';
+import { 
+  DashboardStats, 
+  Target, 
+  Scan, 
+  Finding, 
+  CveItem,
+  ApiAuditResult,
+  CloudReconResult,
+  ComplianceMatrixResult,
+  SecretScanResult,
+  ScheduleItem,
+  ScheduleCreateData
+} from '../types';
 
 const API_BASE = '/api/v1';
 
@@ -155,5 +167,56 @@ export const api = {
   getExecutiveSummary: (target_id?: number) =>
     request<any>(`/ai/executive-summary${target_id ? `?target_id=${target_id}` : ''}`, {
       method: 'POST',
+    }),
+
+  // API Security & OpenAPI Auditor
+  auditApiSecurity: (data: { target_url?: string; spec_json?: string }) =>
+    request<ApiAuditResult>('/api-security/audit', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  // Cloud Recon & Subdomain Takeover
+  scanCloudRecon: (data: { domain: string; check_takeover?: boolean; check_buckets?: boolean }) =>
+    request<CloudReconResult>('/cloud-recon/scan', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  // Compliance Matrix & Audit
+  getComplianceMatrix: (targetId?: number) =>
+    request<ComplianceMatrixResult>(targetId ? `/compliance/matrix?target_id=${targetId}` : '/compliance/matrix'),
+  runComplianceAudit: (targetId?: number) =>
+    request<ComplianceMatrixResult>('/compliance/audit', {
+      method: 'POST',
+      body: JSON.stringify({ target_id: targetId }),
+    }),
+
+  // Secret & Leaked API Key Scanner
+  scanSecrets: (data: { target_url: string }) =>
+    request<SecretScanResult>('/secrets/scan', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+
+  // Schedules & Webhooks
+  getSchedules: () => request<ScheduleItem[]>('/schedules'),
+  createSchedule: (data: ScheduleCreateData) =>
+    request<ScheduleItem>('/schedules', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }),
+  toggleSchedule: (id: number) =>
+    request<{ id: number; is_active: boolean }>(`/schedules/${id}/toggle`, {
+      method: 'POST',
+    }),
+  deleteSchedule: (id: number) =>
+    request<{ success: boolean; message: string }>(`/schedules/${id}`, {
+      method: 'DELETE',
+    }),
+  testWebhook: (data: { webhook_url: string; webhook_platform: string }) =>
+    request<{ success: boolean; message: string }>('/schedules/test-webhook', {
+      method: 'POST',
+      body: JSON.stringify(data),
     }),
 };

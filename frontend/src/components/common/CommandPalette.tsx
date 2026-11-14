@@ -15,7 +15,12 @@ import {
   Settings, 
   ArrowRight, 
   Command,
-  Bot
+  Bot,
+  Cloud,
+  FileJson,
+  KeyRound,
+  Award,
+  CalendarClock
 } from 'lucide-react';
 
 interface CommandPaletteProps {
@@ -31,10 +36,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
     { id: 'dashboard', title: 'Security Operations Dashboard', category: 'Overview', icon: LayoutDashboard },
     { id: 'targets', title: 'Target Management & Scope Allowance', category: 'Assets', icon: Crosshair },
     { id: 'recon', title: 'Reconnaissance & DNS Fingerprinting', category: 'Engines', icon: Globe2 },
+    { id: 'cloud-recon', title: 'Cloud Recon & Subdomain Takeover', category: 'Engines', icon: Cloud },
     { id: 'ports', title: 'TCP Port Scanner & Service Discovery', category: 'Engines', icon: Network },
     { id: 'ssl', title: 'SSL / TLS Certificate & Cipher Audit', category: 'Engines', icon: Lock },
     { id: 'headers', title: 'HTTP Defense-in-Depth Headers', category: 'Engines', icon: FileCode },
+    { id: 'api-sec', title: 'API Security & OpenAPI Auditor', category: 'Assessment', icon: FileJson },
+    { id: 'secrets', title: 'Client Secrets & Leaked API Keys', category: 'Assessment', icon: KeyRound },
     { id: 'vulns', title: 'Vulnerability Assessment (SQLi & XSS)', category: 'Assessment', icon: Bug },
+    { id: 'compliance', title: 'Compliance Matrix (SOC2, ISO27001, PCI)', category: 'Compliance', icon: Award },
+    { id: 'schedules', title: 'Scheduled Scans & Webhook Alerts', category: 'Operations', icon: CalendarClock },
     { id: 'ai', title: 'AI / ML SecOps Copilot & Code SAST', category: 'Intelligence', icon: Bot },
     { id: 'cve', title: 'CVE Intelligence Hub & Database', category: 'Intel', icon: Database },
     { id: 'history', title: 'Scan History & Execution Telemetry', category: 'Operations', icon: History },

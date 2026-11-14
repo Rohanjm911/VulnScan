@@ -82,3 +82,19 @@ class AuditLog(Base):
     details = Column(Text, nullable=True)
     ip_origin = Column(String(64), default="127.0.0.1")
 
+class Schedule(Base):
+    __tablename__ = "schedules"
+
+    id = Column(Integer, primary_key=True, index=True)
+    target_id = Column(Integer, ForeignKey("targets.id"), nullable=False, index=True)
+    scan_type = Column(String(64), default="FULL", nullable=False)
+    frequency = Column(String(32), default="DAILY", nullable=False)  # HOURLY, DAILY, WEEKLY
+    webhook_url = Column(String(1024), nullable=True)
+    webhook_platform = Column(String(32), default="DISCORD", nullable=True)  # DISCORD, SLACK, CUSTOM
+    is_active = Column(Boolean, default=True, nullable=False)
+    last_run_at = Column(DateTime, nullable=True)
+    next_run_at = Column(DateTime, default=datetime.datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+
+    target = relationship("Target")
+

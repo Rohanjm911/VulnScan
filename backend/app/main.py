@@ -5,8 +5,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.database import engine, Base, SessionLocal
-from app.models import Target, Scan, Finding, ScanLog, AuditLog
-from app.api import dashboard, targets, scans, findings, recon, ports, ssl, headers, cve, reports, vulnerabilities, settings as settings_api, ai
+from app.models import Target, Scan, Finding, ScanLog, AuditLog, Schedule
+from app.api import dashboard, targets, scans, findings, recon, ports, ssl, headers, cve, reports, vulnerabilities, settings as settings_api, ai, api_security, cloud_recon, compliance, secrets, schedules
 
 # Initialize database schema
 Base.metadata.create_all(bind=engine)
@@ -42,6 +42,11 @@ app.include_router(vulnerabilities.router, prefix=settings.API_PREFIX)
 app.include_router(reports.router, prefix=settings.API_PREFIX)
 app.include_router(settings_api.router, prefix=settings.API_PREFIX)
 app.include_router(ai.router, prefix=settings.API_PREFIX)
+app.include_router(api_security.router, prefix=settings.API_PREFIX)
+app.include_router(cloud_recon.router, prefix=settings.API_PREFIX)
+app.include_router(compliance.router, prefix=settings.API_PREFIX)
+app.include_router(secrets.router, prefix=settings.API_PREFIX)
+app.include_router(schedules.router, prefix=settings.API_PREFIX)
 
 @app.get("/api/v1/health")
 def health_check():
