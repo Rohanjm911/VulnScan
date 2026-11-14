@@ -1,6 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120" fill="none">
+  <defs>
+    <style>
+      @keyframes pulseDot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.35); opacity: 0.65; }
+      }
+      @keyframes beaconBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.35; }
+      }
+      @keyframes lineGlow {
+        0% { stroke-dashoffset: 400; }
+        100% { stroke-dashoffset: 0; }
+      }
+
+      .pulse-target {
+        transform-origin: 40px 23px;
+        animation: pulseDot 2.2s infinite ease-in-out;
+      }
+      .beacon-dot {
+        animation: beaconBlink 1.8s infinite ease-in-out;
+      }
+      .animated-border {
+        stroke-dasharray: 80 320;
+        animation: lineGlow 4s infinite linear;
+      }
+    </style>
+  </defs>
+
   <!-- Flat Dark Container -->
   <rect width="520" height="120" rx="16" fill="#0d121f" stroke="#1e293b" stroke-width="2"/>
+  <rect width="520" height="120" rx="16" stroke="#3b82f6" stroke-width="1.5" class="animated-border" fill="none" opacity="0.6"/>
 
   <!-- Brand Icon Group (Left aligned) -->
   <g transform="translate(32, 20)">
@@ -22,8 +52,8 @@
       d="M26.5 27L40 51.5L53.5 27H46L40 38.5L34 27H26.5Z"
       fill="#3b82f6"
     />
-    <!-- Precision Target Node -->
-    <circle cx="40" cy="23" r="3.5" fill="#93c5fd" />
+    <!-- Precision Target Node (Animated Pulse) -->
+    <circle cx="40" cy="23" r="3.5" fill="#93c5fd" class="pulse-target" />
     <circle cx="40" cy="23" r="1.5" fill="#ffffff" />
   </g>
 
@@ -39,12 +69,11 @@
       SECOPS INTELLIGENCE PLATFORM
     </text>
 
-    <!-- Status Badge -->
+    <!-- Status Badge with Animated Beacon -->
     <g transform="translate(262, 14)">
       <rect width="86" height="22" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-      <circle cx="10" cy="11" r="3" fill="#10b981"/>
+      <circle cx="10" cy="11" r="3" fill="#10b981" class="beacon-dot"/>
       <text x="20" y="15" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#34d399" letter-spacing="1">LIVE DAST</text>
     </g>
   </g>
 </svg>
-

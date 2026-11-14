@@ -20,6 +20,13 @@
 [![Docker](https://img.shields.io/badge/Docker-24.0+-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
+<br/>
+<br/>
+
+### ⚡ Automated Scan Pipeline Telemetry (Live Animated Demo)
+
+<img src="docs/terminal_demo.svg" alt="VulnScan Live Terminal Telemetry Demo" width="760" />
+
 </div>
 
 ---
@@ -89,6 +96,15 @@ Modern enterprise web applications are frequently exposed to complex attack surf
 | **Framer Motion** | Motion Engine | [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion) | Smooth UI transitions and modal animations |
 | **Recharts** | Data Visualization | [![Recharts](https://img.shields.io/badge/Recharts-22B5BF?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://recharts.org) | Posture trajectories and severity distribution charts |
 | **Lucide Icons** | Iconography | [![Lucide Icons](https://img.shields.io/badge/Lucide_Icons-F56565?style=for-the-badge&logo=feather&logoColor=white)](https://lucide.dev) | Modern cybersecurity icon library |
+
+#### ✨ Motion Design & Flat Micro-Animations
+The user interface follows a modern **Flat Dark** design system paired with hardware-accelerated micro-animations powered by **Framer Motion**:
+- **Gliding Navigation Pill (`layoutId`):** The active navigation indicator in the sidebar glides seamlessly between sections without jarring jumps.
+- **Cubic-Bezier Page Transitions:** Tab switches feature sub-second transitions with soft blur filtering (`blur(2px) ➔ blur(0px)`) and cubic-bezier easing (`[0.16, 1, 0.3, 1]`).
+- **Cascaded Staggered Entrances:** Telemetry overview cards, target grids, and findings lists stagger into view progressively.
+- **Physics-Based Spring Modals:** The Launch Scan dialog, Command Palette (`Ctrl+K`), and AI Remediation modals animate via spring dynamics (`damping: 25, stiffness: 320`) over frosted dark backdrops.
+- **Smooth Finding Accordions:** Finding descriptions, technical canary evidence, and remediation code blocks smoothly expand and collapse.
+- **Tactile Button Feedback:** Tactile down-scaling (`active:scale-[0.98]`) and shimmering gradient pulse during asynchronous network queries.
 
 ### ⚙️ Backend & Asynchronous Engine
 | Technology | Category | Official Badge & Logo | Purpose |
