@@ -78,15 +78,15 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md">
         <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: -20 }}
+          initial={{ opacity: 0, scale: 0.98, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: -20 }}
+          exit={{ opacity: 0, scale: 0.98, y: -10 }}
           transition={{ duration: 0.15 }}
-          className="relative w-full max-w-xl bg-[#140E29] border border-purple-500/40 rounded-2xl shadow-glow-synth overflow-hidden"
+          className="relative w-full max-w-xl bg-[#111827] border border-[#1e293b] rounded-lg shadow-2xl overflow-hidden"
         >
           {/* Search Input Bar */}
-          <div className="flex items-center px-4 py-3.5 border-b border-[#2E1E54] bg-[#0E091E]">
-            <Search className="w-5 h-5 text-fuchsia-400 mr-3 flex-shrink-0" />
+          <div className="flex items-center px-4 py-3.5 border-b border-[#1e293b] bg-[#0d121f]">
+            <Search className="w-5 h-5 text-slate-400 mr-3 flex-shrink-0" />
             <input
               type="text"
               autoFocus
@@ -95,7 +95,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
               placeholder="Search security modules or commands (e.g. 'recon', 'cve', 'ssl')..."
               className="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none font-mono"
             />
-            <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono text-purple-300 bg-[#1D1438] border border-[#3A2768] rounded">
+            <kbd className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono text-slate-400 bg-[#1e293b] border border-[#334155] rounded">
               ESC
             </kbd>
           </div>
@@ -116,22 +116,22 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
                       onNavigate(item.id);
                       onClose();
                     }}
-                    className="w-full flex items-center justify-between p-3 rounded-xl hover:bg-[#1E143E]/80 hover:border hover:border-purple-500/30 text-left transition-all group"
+                    className="w-full flex items-center justify-between p-2.5 rounded-lg hover:bg-[#1e293b] text-left transition-colors group"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-[#0F0A1F] text-fuchsia-400 border border-[#2E1E54] group-hover:border-purple-500/40 group-hover:bg-purple-500/15 transition-colors">
+                      <div className="p-2 rounded bg-[#0d121f] text-blue-400 border border-[#1e293b] group-hover:border-[#334155] transition-colors">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <p className="text-xs font-semibold text-slate-200 group-hover:text-purple-300 transition-colors">
+                        <p className="text-xs font-medium text-slate-200 group-hover:text-white transition-colors">
                           {item.title}
                         </p>
-                        <span className="text-[10px] font-mono text-purple-400/80 uppercase tracking-wider">
+                        <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">
                           {item.category}
                         </span>
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-fuchsia-400 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-slate-600 group-hover:text-slate-300 transition-colors" />
                   </button>
                 );
               })
@@ -139,10 +139,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
           </div>
 
           {/* Footer Shortcuts */}
-          <div className="px-4 py-2.5 bg-[#0E091E] border-t border-[#2E1E54] text-[11px] font-mono text-purple-400/70 flex items-center justify-between">
+          <div className="px-4 py-2 bg-[#0d121f] border-t border-[#1e293b] text-[11px] font-mono text-slate-500 flex items-center justify-between">
             <span>Navigate: ↑ ↓</span>
             <span>Select: ↵</span>
-            <span>VulnScan Synthwave Navigator</span>
+            <span>SecOps Command Center</span>
           </div>
         </motion.div>
       </div>

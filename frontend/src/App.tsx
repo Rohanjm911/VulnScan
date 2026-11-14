@@ -73,7 +73,7 @@ export function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080B14] text-slate-100 flex overflow-x-hidden">
+    <div className="min-h-screen bg-[#0b0f19] text-slate-100 flex overflow-x-hidden">
       {/* Sidebar Navigation */}
       <Sidebar
         currentTab={currentTab}

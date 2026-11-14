@@ -86,6 +86,11 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ url }),
     }),
+  inspectTargetRecon: (url: string) =>
+    request<any>('/recon/inspect', {
+      method: 'POST',
+      body: JSON.stringify({ url }),
+    }),
   scanPorts: (url: string, custom_ports?: number[]) =>
     request<any>('/ports/scan', {
       method: 'POST',

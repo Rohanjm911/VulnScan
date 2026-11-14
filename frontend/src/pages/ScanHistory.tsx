@@ -117,9 +117,9 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ initialScanId }) => {
                   <div
                     key={s.id}
                     onClick={() => setSelectedScanId(s.id)}
-                    className={`p-3.5 rounded-xl border cursor-pointer transition-all ${
+                    className={`p-3.5 rounded-xl border cursor-pointer transition-colors ${
                       isSelected
-                        ? 'bg-cyan-500/10 border-cyan-500/40 shadow-glow-electric'
+                        ? 'bg-blue-500/10 border-blue-500/50'
                         : 'bg-slate-900/40 border-slate-800 hover:border-slate-700'
                     }`}
                   >
@@ -144,7 +144,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ initialScanId }) => {
                         className={`h-full transition-all duration-500 ${
                           s.status === 'COMPLETED' ? 'bg-emerald-400' :
                           s.status === 'FAILED' ? 'bg-red-400' :
-                          s.status === 'CANCELLED' ? 'bg-slate-500' : 'bg-cyan-400 animate-pulse'
+                          s.status === 'CANCELLED' ? 'bg-slate-500' : 'bg-blue-500'
                         }`}
                         style={{ width: `${s.progress}%` }}
                       />
@@ -188,7 +188,7 @@ export const ScanHistory: React.FC<ScanHistoryProps> = ({ initialScanId }) => {
                     href={api.generateReportForScanUrl(scanDetail.id)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black text-xs font-bold transition-all shadow-glow-electric"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium transition-colors"
                   >
                     <Download className="w-3.5 h-3.5" />
                     <span>Download PDF</span>

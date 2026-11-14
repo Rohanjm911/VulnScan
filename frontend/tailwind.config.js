@@ -7,37 +7,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#0B0814',
+        background: '#0b0f19',
         surface: {
-          DEFAULT: '#120C24',
-          card: '#18112E',
-          border: '#2E1E54',
-          hover: '#261947',
+          DEFAULT: '#111827',
+          card: '#111827',
+          border: '#1f2937',
+          hover: '#1f2937',
         },
         synth: {
-          violet: '#C084FC',
-          fuchsia: '#E879F9',
-          neon: '#A855F7',
-          sky: '#38BDF8',
-          glow: 'rgba(192, 132, 252, 0.3)',
+          violet: '#60a5fa',
+          fuchsia: '#3b82f6',
+          neon: '#2563eb',
+          sky: '#38bdf8',
+          glow: 'transparent',
         },
         cyber: {
-          green: '#10B981',
-          amber: '#F59E0B',
-          red: '#EF4444',
-          blue: '#38BDF8',
+          green: '#10b981',
+          amber: '#f59e0b',
+          red: '#ef4444',
+          blue: '#3b82f6',
         }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'Courier New', 'monospace'],
-        heading: ['Space Grotesk', 'sans-serif']
+        heading: ['Inter', 'sans-serif']
       },
       boxShadow: {
-        'glow-synth': '0 0 25px -4px rgba(192, 132, 252, 0.4)',
-        'glow-fuchsia': '0 0 25px -4px rgba(232, 121, 249, 0.35)',
-        'glow-sky': '0 0 25px -4px rgba(56, 189, 248, 0.35)',
-        'glow-red': '0 0 20px -3px rgba(239, 68, 68, 0.35)',
+        // Flat design - zero neon glow
+        'glow-synth': 'none',
+        'glow-fuchsia': 'none',
+        'glow-sky': 'none',
+        'glow-red': 'none',
+        'glow-electric': 'none',
       }
     },
   },

@@ -160,33 +160,33 @@ def login_user(username, password):
       className="space-y-6"
     >
       {/* Top Banner Header */}
-      <div className="p-5 rounded-2xl bg-gradient-to-r from-[#170E32] via-[#201444] to-[#170E32] border border-purple-500/40 shadow-glow-synth flex flex-wrap items-center justify-between gap-4">
+      <div className="cyber-card p-5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-purple-600/25 text-fuchsia-300 border border-purple-500/40 shadow-glow-synth">
-            <Bot className="w-6 h-6 animate-pulse" />
+          <div className="p-2.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
+            <Bot className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <h2 className="text-base font-bold font-heading text-white tracking-wide">
                 AI / ML Cybersecurity Intelligence Center
               </h2>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950/80 text-fuchsia-300 border border-purple-800/60">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">
                 ACTIVE
               </span>
             </div>
-            <p className="text-xs text-purple-300/70 font-sans">
+            <p className="text-xs text-slate-400 font-sans">
               Machine Learning Exploit Prediction (EPSS), Adaptive Payload Mutation, Code SAST, & SecOps Copilot
             </p>
           </div>
         </div>
 
         {/* Navigation Tabs */}
-        <div className="flex items-center gap-1.5 bg-[#120B24] p-1 rounded-xl border border-[#2E1E54]">
+        <div className="flex items-center gap-1.5 bg-[#131722] p-1 rounded-lg border border-slate-700">
           <button
             onClick={() => setActiveModule('chat')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-colors flex items-center gap-1.5 ${
               activeModule === 'chat'
-                ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-glow-synth'
+                ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -196,9 +196,9 @@ def login_user(username, password):
 
           <button
             onClick={() => setActiveModule('sast')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-colors flex items-center gap-1.5 ${
               activeModule === 'sast'
-                ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-glow-synth'
+                ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -208,9 +208,9 @@ def login_user(username, password):
 
           <button
             onClick={() => setActiveModule('epss')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-colors flex items-center gap-1.5 ${
               activeModule === 'epss'
-                ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-glow-synth'
+                ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -220,9 +220,9 @@ def login_user(username, password):
 
           <button
             onClick={() => setActiveModule('mutator')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all flex items-center gap-1.5 ${
+            className={`px-3 py-1.5 rounded-md text-xs font-mono font-medium transition-colors flex items-center gap-1.5 ${
               activeModule === 'mutator'
-                ? 'bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white shadow-glow-synth'
+                ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
@@ -235,14 +235,14 @@ def login_user(username, password):
       {/* Module 1: SecOps Copilot Chat */}
       {activeModule === 'chat' && (
         <div className="cyber-card p-5 flex flex-col h-[600px]">
-          <div className="flex items-center justify-between pb-3 border-b border-[#2E1E54] mb-4">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
             <div className="flex items-center gap-2">
-              <Bot className="w-4 h-4 text-fuchsia-400" />
+              <Bot className="w-4 h-4 text-blue-400" />
               <span className="font-bold text-xs uppercase font-heading text-white">
                 Conversational SecOps Intelligence
               </span>
             </div>
-            <span className="text-[10px] font-mono text-purple-400">
+            <span className="text-[10px] font-mono text-slate-400">
               Live Threat Triage & Architecture Guidance
             </span>
           </div>
@@ -255,19 +255,19 @@ def login_user(username, password):
                 className={`flex gap-3 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'ai' && (
-                  <div className="w-7 h-7 rounded-lg bg-purple-600/30 border border-purple-500/50 flex items-center justify-center text-fuchsia-300 shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 mt-0.5">
                     <Sparkles className="w-3.5 h-3.5" />
                   </div>
                 )}
                 <div
                   className={`max-w-[78%] rounded-xl p-3.5 leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border border-purple-400/40 shadow-glow-synth'
-                      : 'bg-[#150F2C] border border-[#2E1E54] text-slate-200'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-[#131722] border border-slate-700 text-slate-200'
                   }`}
                 >
                   <div className="whitespace-pre-wrap">{m.text}</div>
-                  <div className="flex items-center justify-between mt-2 pt-1 border-t border-purple-500/20 text-[10px] font-mono text-purple-300/60">
+                  <div className="flex items-center justify-between mt-2 pt-1 border-t border-slate-700/50 text-[10px] font-mono text-slate-400">
                     <span>{m.model || 'Analyst'}</span>
                     <span>{m.time}</span>
                   </div>
@@ -275,8 +275,8 @@ def login_user(username, password):
               </div>
             ))}
             {chatLoading && (
-              <div className="flex gap-2 items-center text-xs text-purple-300 font-mono">
-                <div className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+              <div className="flex gap-2 items-center text-xs text-blue-400 font-mono">
+                <div className="w-2 h-2 rounded-full bg-blue-400 animate-ping" />
                 <span>AI SecOps Copilot reasoning...</span>
               </div>
             )}
@@ -294,7 +294,7 @@ def login_user(username, password):
               <button
                 key={i}
                 onClick={() => handleSendChat(prompt)}
-                className="px-2.5 py-1 rounded bg-[#170E32] hover:bg-[#221648] text-purple-300 border border-purple-500/30 whitespace-nowrap transition-colors"
+                className="px-2.5 py-1 rounded bg-[#131722] hover:bg-slate-800 text-slate-300 border border-slate-700 whitespace-nowrap transition-colors"
               >
                 {prompt}
               </button>
@@ -307,19 +307,19 @@ def login_user(username, password):
               e.preventDefault();
               handleSendChat();
             }}
-            className="pt-3 border-t border-[#2E1E54] flex items-center gap-2"
+            className="pt-3 border-t border-slate-800 flex items-center gap-2"
           >
             <input
               type="text"
               value={inputQuestion}
               onChange={(e) => setInputQuestion(e.target.value)}
               placeholder="Ask anything about vulnerabilities, CVEs, attack vectors, or code fixes..."
-              className="flex-1 px-4 py-2.5 rounded-xl bg-[#0D081C] border border-[#2E1E54] focus:border-purple-500 text-xs text-white placeholder-slate-500 focus:outline-none"
+              className="flex-1 px-4 py-2.5 rounded-lg bg-[#131722] border border-slate-700 focus:border-blue-500 text-xs text-white placeholder-slate-500 focus:outline-none"
             />
             <button
               type="submit"
               disabled={chatLoading || !inputQuestion.trim()}
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 disabled:opacity-50 text-white font-bold text-xs uppercase tracking-wider shadow-glow-synth transition-all flex items-center gap-1.5"
+              className="px-4 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center gap-1.5"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Ask</span>
@@ -332,23 +332,23 @@ def login_user(username, password):
       {activeModule === 'sast' && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div className="cyber-card p-5 flex flex-col">
-            <div className="flex items-center justify-between pb-3 border-b border-[#2E1E54] mb-3">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
               <span className="font-bold text-xs font-heading uppercase text-white flex items-center gap-2">
-                <Code className="w-4 h-4 text-fuchsia-400" />
+                <Code className="w-4 h-4 text-blue-400" />
                 <span>Source Code Under Audit</span>
               </span>
-              <span className="text-[10px] font-mono text-purple-400">Python / Node / SQL</span>
+              <span className="text-[10px] font-mono text-slate-400">Python / Node / SQL</span>
             </div>
 
             <textarea
               rows={16}
               value={sampleCode}
               onChange={(e) => setSampleCode(e.target.value)}
-              className="w-full flex-1 p-3.5 rounded-xl bg-[#0A0614] border border-[#2E1E54] text-xs font-mono text-purple-200 focus:border-purple-500 focus:outline-none leading-relaxed resize-none"
+              className="w-full flex-1 p-3.5 rounded-lg bg-[#0b0f19] border border-slate-800 text-xs font-mono text-slate-200 focus:border-blue-500 focus:outline-none leading-relaxed resize-none"
               placeholder="Paste code snippet to audit for OWASP Top 10 vulnerabilities..."
             />
 
-            <div className="flex items-center justify-between pt-4 mt-2 border-t border-[#2E1E54]">
+            <div className="flex items-center justify-between pt-4 mt-2 border-t border-slate-800">
               <button
                 type="button"
                 onClick={() => setSampleCode(
@@ -358,7 +358,7 @@ def render_profile(req):
     # Unescaped reflection
     return f"<html><body><h1>User Bio</h1>{user_input}</body></html>"`
                 )}
-                className="text-xs text-purple-400 hover:underline font-mono"
+                className="text-xs text-blue-400 hover:underline font-mono"
               >
                 Load XSS Sample
               </button>
@@ -367,7 +367,7 @@ def render_profile(req):
                 type="button"
                 onClick={handleAuditCode}
                 disabled={sastLoading}
-                className="px-5 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white font-bold text-xs uppercase tracking-wider shadow-glow-synth transition-all flex items-center gap-2"
+                className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center gap-2"
               >
                 {sastLoading ? (
                   <>
@@ -385,13 +385,13 @@ def render_profile(req):
           </div>
 
           <div className="cyber-card p-5 flex flex-col">
-            <div className="flex items-center justify-between pb-3 border-b border-[#2E1E54] mb-3">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
               <span className="font-bold text-xs font-heading uppercase text-white flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
                 <span>SAST Findings & Refactored Fix</span>
               </span>
               {sastResult && (
-                <span className="text-xs font-mono font-bold text-fuchsia-400">
+                <span className="text-xs font-mono font-bold text-blue-400">
                   Security Score: {sastResult.score} / 100
                 </span>
               )}
@@ -399,7 +399,7 @@ def render_profile(req):
 
             {sastResult ? (
               <div className="space-y-4 overflow-y-auto max-h-[500px] text-xs">
-                <div className="p-3 rounded-lg bg-[#160E30] border border-purple-500/30 text-purple-200">
+                <div className="p-3 rounded-lg bg-[#131722] border border-slate-800 text-slate-300">
                   {sastResult.summary}
                 </div>
 
@@ -410,18 +410,18 @@ def render_profile(req):
                   {sastResult.vulnerabilities_detected.map((v: any, idx: number) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-lg bg-[#191036] border border-red-500/30 flex items-start justify-between gap-3"
+                      className="p-3 rounded-lg bg-[#131722] border border-red-500/20 flex items-start justify-between gap-3"
                     >
                       <div>
                         <div className="flex items-center gap-2">
-                          <span className="px-1.5 py-0.2 rounded bg-red-500/20 text-red-400 font-mono text-[9px] font-bold">
+                          <span className="px-1.5 py-0.2 rounded bg-red-500/10 text-red-400 font-mono text-[9px] font-bold">
                             {v.severity}
                           </span>
                           <span className="font-semibold text-slate-100">{v.title}</span>
                         </div>
                         <p className="text-[11px] text-slate-400 mt-1">{v.description}</p>
                       </div>
-                      <span className="font-mono text-[10px] text-purple-400 shrink-0">
+                      <span className="font-mono text-[10px] text-slate-400 shrink-0">
                         Line {v.line}
                       </span>
                     </div>
@@ -432,14 +432,14 @@ def render_profile(req):
                   <span className="text-[10px] font-mono uppercase text-emerald-400 block font-bold">
                     Secure Refactored Code
                   </span>
-                  <pre className="p-3.5 rounded-xl bg-[#080512] border border-[#2E1E54] text-emerald-300 font-mono text-[11px] overflow-x-auto leading-relaxed">
+                  <pre className="p-3.5 rounded-lg bg-[#0b0f19] border border-slate-800 text-emerald-300 font-mono text-[11px] overflow-x-auto leading-relaxed">
                     <code>{sastResult.secure_refactored_code}</code>
                   </pre>
                 </div>
               </div>
             ) : (
               <div className="h-full flex flex-col items-center justify-center text-center p-8 text-slate-500 space-y-2">
-                <Code className="w-10 h-10 text-purple-400/40" />
+                <Code className="w-10 h-10 text-slate-600" />
                 <p className="text-xs font-mono">
                   Paste or select a code snippet on the left and click "Scan Code with AI" to identify security flaws.
                 </p>
@@ -453,9 +453,9 @@ def render_profile(req):
       {activeModule === 'epss' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="cyber-card p-5 lg:col-span-1 space-y-4">
-            <div className="pb-3 border-b border-[#2E1E54]">
+            <div className="pb-3 border-b border-slate-800">
               <h3 className="font-bold text-xs font-heading uppercase text-white flex items-center gap-2">
-                <Sliders className="w-4 h-4 text-fuchsia-400" />
+                <Sliders className="w-4 h-4 text-blue-400" />
                 <span>Feature Vector Parameters</span>
               </h3>
               <p className="text-[11px] text-slate-400 mt-0.5">
@@ -467,7 +467,7 @@ def render_profile(req):
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs">
                 <span className="text-slate-300 font-medium">CVSS Base Score</span>
-                <span className="font-mono font-bold text-purple-300">{cvss.toFixed(1)} / 10.0</span>
+                <span className="font-mono font-bold text-blue-400">{cvss.toFixed(1)} / 10.0</span>
               </div>
               <input
                 type="range"
@@ -476,7 +476,7 @@ def render_profile(req):
                 step="0.1"
                 value={cvss}
                 onChange={(e) => setCvss(parseFloat(e.target.value))}
-                className="w-full accent-fuchsia-500 cursor-pointer"
+                className="w-full accent-blue-500 cursor-pointer"
               />
             </div>
 
@@ -488,7 +488,7 @@ def render_profile(req):
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="w-full px-3 py-2 rounded-lg bg-[#0F0A1E] border border-[#2E1E54] text-xs text-purple-200 focus:outline-none"
+                className="w-full px-3 py-2 rounded-lg bg-[#131722] border border-slate-700 text-xs text-slate-200 focus:border-blue-500 focus:outline-none"
               >
                 <option value="SQL Injection">SQL Injection (CWE-89)</option>
                 <option value="Remote Code Execution">Remote Code Execution (CWE-78/94)</option>
@@ -499,13 +499,13 @@ def render_profile(req):
             </div>
 
             {/* Checkboxes */}
-            <div className="space-y-2 pt-2 border-t border-[#2E1E54] text-xs">
+            <div className="space-y-2 pt-2 border-t border-slate-800 text-xs">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
                   checked={hasPoc}
                   onChange={(e) => setHasPoc(e.target.checked)}
-                  className="rounded border-[#2E1E54] text-purple-600 focus:ring-purple-400 w-4 h-4"
+                  className="rounded border-slate-700 text-blue-600 focus:ring-blue-400 w-4 h-4"
                 />
                 <span className="text-slate-300">Public Weaponized PoC Available</span>
               </label>
@@ -515,7 +515,7 @@ def render_profile(req):
                   type="checkbox"
                   checked={isRemote}
                   onChange={(e) => setIsRemote(e.target.checked)}
-                  className="rounded border-[#2E1E54] text-purple-600 focus:ring-purple-400 w-4 h-4"
+                  className="rounded border-slate-700 text-blue-600 focus:ring-blue-400 w-4 h-4"
                 />
                 <span className="text-slate-300">Remotely Accessible Network Surface</span>
               </label>
@@ -525,7 +525,7 @@ def render_profile(req):
                   type="checkbox"
                   checked={requiresAuth}
                   onChange={(e) => setRequiresAuth(e.target.checked)}
-                  className="rounded border-[#2E1E54] text-purple-600 focus:ring-purple-400 w-4 h-4"
+                  className="rounded border-slate-700 text-blue-600 focus:ring-blue-400 w-4 h-4"
                 />
                 <span className="text-slate-300">Requires Valid Authentication Credentials</span>
               </label>
@@ -533,12 +533,12 @@ def render_profile(req):
           </div>
 
           <div className="cyber-card p-5 lg:col-span-2 space-y-5">
-            <div className="pb-3 border-b border-[#2E1E54] flex items-center justify-between">
+            <div className="pb-3 border-b border-slate-800 flex items-center justify-between">
               <h3 className="font-bold text-xs font-heading uppercase text-white flex items-center gap-2">
                 <Flame className="w-4 h-4 text-red-400" />
                 <span>ML EPSS Exploitability Scorecard</span>
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-fuchsia-300 border border-purple-800">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30">
                 EPSS v3 MODEL
               </span>
             </div>
@@ -546,19 +546,19 @@ def render_profile(req):
             {epssResult && (
               <div className="space-y-5">
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-xl bg-[#170E30] border border-red-500/30">
+                  <div className="p-4 rounded-xl bg-[#131722] border border-red-500/20">
                     <span className="text-[10px] font-mono uppercase text-slate-400 block">
                       Exploitation Probability
                     </span>
                     <p className="text-3xl font-black font-heading text-red-400 mt-1">
                       {epssResult.epss_percentage}
                     </p>
-                    <p className="text-[11px] text-purple-300/70 mt-1">
+                    <p className="text-[11px] text-slate-400 mt-1">
                       {epssResult.percentile} of all known CVEs
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-[#170E30] border border-amber-500/30">
+                  <div className="p-4 rounded-xl bg-[#131722] border border-amber-500/20">
                     <span className="text-[10px] font-mono uppercase text-slate-400 block">
                       Recommended SLA
                     </span>
@@ -570,11 +570,11 @@ def render_profile(req):
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-[#170E30] border border-purple-500/30">
+                  <div className="p-4 rounded-xl bg-[#131722] border border-slate-800">
                     <span className="text-[10px] font-mono uppercase text-slate-400 block">
                       Threat Velocity Tier
                     </span>
-                    <p className="text-base font-bold font-mono text-fuchsia-300 mt-1">
+                    <p className="text-base font-bold font-mono text-blue-400 mt-1">
                       {epssResult.tier}
                     </p>
                     <p className="text-[11px] text-slate-400 mt-1">
@@ -583,13 +583,13 @@ def render_profile(req):
                   </div>
                 </div>
 
-                <div className="p-4 rounded-xl bg-[#140D2B] border border-[#2E1E54] text-xs text-slate-300 space-y-2 leading-relaxed">
+                <div className="p-4 rounded-xl bg-[#131722] border border-slate-800 text-xs text-slate-300 space-y-2 leading-relaxed">
                   <span className="font-bold font-mono text-white block">
                     AI Threat Intelligence Interpretation:
                   </span>
                   <p>
                     Based on calibrated empirical EPSS threat distributions, vulnerabilities matching this profile exhibit{' '}
-                    <strong className="text-fuchsia-400">{epssResult.epss_percentage} likelihood of in-the-wild exploitation</strong> within 30 days.
+                    <strong className="text-blue-400">{epssResult.epss_percentage} likelihood of in-the-wild exploitation</strong> within 30 days.
                     Because this asset involves {isRemote ? 'unrestricted remote network ingress' : 'local access'}{' '}
                     and {hasPoc ? 'publicly accessible weaponized exploits exist' : 'no verified weaponized exploit is currently published'},
                     security teams must prioritize mitigation according to SLA window: <strong className="text-amber-300">{epssResult.recommended_sla}</strong>.
@@ -604,9 +604,9 @@ def render_profile(req):
       {/* Module 4: WAF Payload Mutator */}
       {activeModule === 'mutator' && (
         <div className="cyber-card p-5 space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-[#2E1E54]">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
             <div className="flex items-center gap-2">
-              <Zap className="w-4 h-4 text-fuchsia-400" />
+              <Zap className="w-4 h-4 text-blue-400" />
               <h3 className="font-bold text-xs font-heading uppercase text-white">
                 Adaptive WAF & Filter Bypass Payload Mutator
               </h3>
@@ -615,24 +615,24 @@ def render_profile(req):
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => handleFetchMutations('sqli')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all ${
-                  mutatorType === 'sqli' ? 'bg-purple-600 text-white shadow-glow-synth' : 'text-slate-400 hover:text-white'
+                className={`px-3 py-1 rounded-lg text-xs font-mono font-medium transition-colors ${
+                  mutatorType === 'sqli' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 SQL Injection
               </button>
               <button
                 onClick={() => handleFetchMutations('xss')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all ${
-                  mutatorType === 'xss' ? 'bg-purple-600 text-white shadow-glow-synth' : 'text-slate-400 hover:text-white'
+                className={`px-3 py-1 rounded-lg text-xs font-mono font-medium transition-colors ${
+                  mutatorType === 'xss' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 Cross-Site Scripting
               </button>
               <button
                 onClick={() => handleFetchMutations('traversal')}
-                className={`px-3 py-1 rounded-lg text-xs font-mono font-semibold transition-all ${
-                  mutatorType === 'traversal' ? 'bg-purple-600 text-white shadow-glow-synth' : 'text-slate-400 hover:text-white'
+                className={`px-3 py-1 rounded-lg text-xs font-mono font-medium transition-colors ${
+                  mutatorType === 'traversal' ? 'bg-blue-600 text-white' : 'text-slate-400 hover:text-white'
                 }`}
               >
                 Traversal / Headers
@@ -644,23 +644,23 @@ def render_profile(req):
             {mutations.map((m, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-xl bg-[#140D2B] border border-[#2E1E54] hover:border-purple-500/50 transition-all space-y-2.5 text-xs font-sans"
+                className="p-4 rounded-xl bg-[#131722] border border-slate-800 hover:border-slate-700 transition-colors space-y-2.5 text-xs font-sans"
               >
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-100">{m.title}</span>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-fuchsia-300 border border-purple-800">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">
                     {m.technique}
                   </span>
                 </div>
 
-                <div className="p-2.5 rounded-lg bg-[#080512] border border-[#2E1E54] font-mono text-purple-200 text-xs flex items-center justify-between">
+                <div className="p-2.5 rounded-lg bg-[#0b0f19] border border-slate-800 font-mono text-blue-300 text-xs flex items-center justify-between">
                   <span className="truncate">{m.payload}</span>
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(m.payload);
                       toastSuccess('Payload Copied', m.payload);
                     }}
-                    className="p-1 hover:text-white text-purple-400 ml-2 shrink-0"
+                    className="p-1 hover:text-white text-slate-400 ml-2 shrink-0"
                     title="Copy Payload"
                   >
                     <Copy className="w-3.5 h-3.5" />

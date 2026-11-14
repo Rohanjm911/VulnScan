@@ -60,12 +60,12 @@ export const CveIntelligence: React.FC = () => {
       {/* Live Server Banner Check Bar */}
       <div className="cyber-card p-5 space-y-3">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-4 h-4 text-fuchsia-400" />
+          <Sparkles className="w-4 h-4 text-blue-400" />
           <h3 className="text-sm font-bold font-heading text-white uppercase tracking-wider">
             Live Server Banner & Fingerprint CVE Correlator
           </h3>
         </div>
-        <p className="text-xs text-purple-300/70">
+        <p className="text-xs text-slate-400">
           Test web server banners against the CVE intelligence rule engine to discover potential vulnerabilities.
         </p>
 
@@ -75,22 +75,22 @@ export const CveIntelligence: React.FC = () => {
             value={bannerInput}
             onChange={(e) => setBannerInput(e.target.value)}
             placeholder="e.g. Apache/2.4.49, nginx/1.18.0, OpenSSH_8.2p1, Spring-Boot/2.5.0"
-            className="w-full pl-4 pr-4 py-2.5 rounded-lg bg-[#0F0A1F] border border-[#2E1E54] text-slate-200 text-xs font-mono focus:border-purple-400 focus:outline-none"
+            className="w-full pl-4 pr-4 py-2.5 rounded-lg bg-[#131722] border border-slate-700 text-slate-200 text-xs font-mono focus:border-blue-500 focus:outline-none"
           />
           <button
             type="submit"
             disabled={checkingBanner}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white font-bold text-xs uppercase tracking-wider shadow-glow-synth transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+            className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
           >
             {checkingBanner ? 'Matching...' : 'Correlate CVEs'}
           </button>
         </form>
 
         {bannerMatches !== null && (
-          <div className="p-4 rounded-xl bg-[#140E29] border border-purple-500/30 text-xs space-y-3 animate-fadeIn">
-            <div className="flex items-center justify-between pb-2 border-b border-[#2E1E54]">
+          <div className="p-4 rounded-xl bg-[#131722] border border-slate-800 text-xs space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800">
               <span className="font-bold text-white font-heading">
-                Matches for: <code className="text-fuchsia-300">{bannerInput}</code>
+                Matches for: <code className="text-blue-400">{bannerInput}</code>
               </span>
               <span className={`px-2 py-0.5 rounded font-mono text-[10px] ${
                 bannerMatches.length > 0 ? 'bg-red-500/10 text-red-400 border border-red-500/30' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
@@ -104,10 +104,10 @@ export const CveIntelligence: React.FC = () => {
             ) : (
               <div className="space-y-2">
                 {bannerMatches.map((m: any, i: number) => (
-                  <div key={i} className="p-3 rounded-lg bg-[#0F0A1F] border border-[#2E1E54] flex items-start justify-between gap-3">
+                  <div key={i} className="p-3 rounded-lg bg-[#0b0f19] border border-slate-800 flex items-start justify-between gap-3">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-purple-300">{m.cve_id}</span>
+                        <span className="font-bold text-blue-400">{m.cve_id}</span>
                         <SeverityBadge severity={m.severity} size="sm" />
                       </div>
                       <p className="text-slate-300">{m.title}</p>
@@ -117,7 +117,7 @@ export const CveIntelligence: React.FC = () => {
                       href={`https://nvd.nist.gov/vuln/detail/${m.cve_id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-purple-400 hover:text-purple-300 text-xs flex items-center gap-1 font-mono"
+                      className="text-blue-400 hover:text-blue-300 text-xs flex items-center gap-1 font-mono"
                     >
                       <span>NVD</span>
                       <ExternalLink className="w-3 h-3" />
@@ -133,19 +133,19 @@ export const CveIntelligence: React.FC = () => {
       {/* Search Header for Database */}
       <div className="cyber-card p-5 space-y-4">
         <div className="relative w-full">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-purple-400" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search CVE ID (e.g. CVE-2021-41773), software (Apache, Nginx, PHP, Spring)..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[#0F0A1F] border border-[#2E1E54] text-slate-200 text-xs font-mono focus:border-purple-400 focus:outline-none"
+            className="w-full pl-10 pr-4 py-2.5 rounded-lg bg-[#131722] border border-slate-700 text-slate-200 text-xs font-mono focus:border-blue-500 focus:outline-none"
           />
         </div>
 
         {/* Disclaimer Banner */}
-        <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/25 text-purple-200 text-[11px] flex items-center gap-2 font-mono">
-          <ShieldAlert className="w-4 h-4 flex-shrink-0 text-fuchsia-400" />
+        <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-slate-300 text-[11px] flex items-center gap-2 font-mono">
+          <ShieldAlert className="w-4 h-4 flex-shrink-0 text-blue-400" />
           <span>
             <strong>Methodology Standard:</strong> VulnScan matches software fingerprint versions against known CVE records. Potential exposure indicates version correlation and requires secondary context verification.
           </span>
@@ -155,7 +155,7 @@ export const CveIntelligence: React.FC = () => {
       {/* CVE Grid */}
       {loading ? (
         <div className="flex items-center justify-center p-12">
-          <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
         </div>
       ) : cves.length === 0 ? (
         <div className="p-12 text-center cyber-card">
@@ -172,10 +172,10 @@ export const CveIntelligence: React.FC = () => {
               <div>
                 <div className="flex items-start justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono font-bold text-purple-300 text-sm">
+                    <span className="font-mono font-bold text-blue-400 text-sm">
                       {cve.cve_id}
                     </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/15 text-purple-300 border border-purple-500/25">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300 border border-slate-700">
                       CVSS {cve.cvss}
                     </span>
                   </div>
@@ -186,8 +186,8 @@ export const CveIntelligence: React.FC = () => {
                   {cve.title}
                 </h4>
 
-                <div className="flex items-center gap-2 text-[11px] font-mono text-fuchsia-400 mb-2">
-                  <Cpu className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400 mb-2">
+                  <Cpu className="w-3.5 h-3.5 text-blue-400" />
                   <span>Target Component: {cve.software}</span>
                 </div>
 
@@ -196,7 +196,7 @@ export const CveIntelligence: React.FC = () => {
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-[#2E1E54] space-y-2">
+              <div className="pt-3 border-t border-slate-800 space-y-2">
                 <div className="text-[11px] font-mono text-emerald-400">
                   <strong className="text-slate-400">Remediation: </strong>
                   {cve.remediation}
@@ -207,7 +207,7 @@ export const CveIntelligence: React.FC = () => {
                     href={`https://nvd.nist.gov/vuln/detail/${cve.cve_id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-fuchsia-400 hover:text-fuchsia-300 flex items-center gap-1 hover:underline"
+                    className="text-blue-400 hover:text-blue-300 flex items-center gap-1 hover:underline"
                   >
                     <span>NVD Entry</span>
                     <ExternalLink className="w-3 h-3" />

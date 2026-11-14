@@ -65,21 +65,18 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-[#0B0814] border-r border-[#2E1E54]">
-      {/* Brand Header */}
-      <div className={`h-16 flex items-center border-b border-[#2E1E54]/80 px-4 ${
+    <div className="flex flex-col h-full bg-[#0d121f] border-r border-[#1e293b]">
+      {/* Flat Brand Header */}
+      <div className={`h-16 flex items-center border-b border-[#1e293b] px-4 ${
         isExpanded ? 'justify-between' : 'justify-center'
       }`}>
         <div className="flex items-center gap-3 overflow-hidden">
-          <div className="relative p-2 rounded-xl bg-gradient-to-tr from-purple-500/25 to-fuchsia-500/25 border border-purple-500/50 shadow-glow-synth flex-shrink-0 cursor-pointer"
+          <div 
+            className="p-2 rounded-lg bg-blue-600/10 border border-blue-500/20 text-blue-400 flex-shrink-0 cursor-pointer"
             onClick={() => !isExpanded && setCollapsed(false)}
             title="Expand Sidebar"
           >
-            <ShieldCheck className="w-5 h-5 text-purple-300" />
-            <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fuchsia-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-purple-500"></span>
-            </span>
+            <ShieldCheck className="w-5 h-5 text-blue-400" />
           </div>
 
           {isExpanded && (
@@ -89,11 +86,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
               exit={{ opacity: 0, x: -10 }}
               className="truncate"
             >
-              <span className="text-base font-bold font-heading tracking-wider bg-gradient-to-r from-white via-purple-200 to-fuchsia-400 bg-clip-text text-transparent">
+              <span className="text-base font-bold tracking-wide text-white">
                 VULNSCAN
               </span>
-              <p className="text-[10px] font-mono text-purple-400/90 uppercase tracking-widest -mt-0.5">
-                AppSec Intel
+              <p className="text-[10px] font-mono text-slate-400 uppercase tracking-widest">
+                SecOps Platform
               </p>
             </motion.div>
           )}
@@ -110,7 +107,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         ) : isExpanded ? (
           <button
             onClick={() => setCollapsed(true)}
-            className="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#1D1438] transition-colors"
+            className="hidden lg:flex p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-[#1e293b] transition-colors"
             title="Collapse Sidebar"
           >
             <ChevronLeft className="w-4 h-4" />
@@ -118,45 +115,38 @@ export const Sidebar: React.FC<SidebarProps> = ({
         ) : null}
       </div>
 
-      {/* Navigation Links */}
-      <div className={`flex-1 overflow-y-auto py-4 space-y-2 ${isExpanded ? 'px-3' : 'px-2'}`}>
+      {/* Flat Navigation Links */}
+      <div className={`flex-1 overflow-y-auto py-3 space-y-1 ${isExpanded ? 'px-3' : 'px-2'}`}>
         {navItems.map((item) => {
           const Icon = item.icon;
           const isActive = currentTab === item.id;
 
           if (!isExpanded) {
-            // Collapsed Mode: Perfectly centered, enlarged icons with sleek floating tooltips
+            // Collapsed Mode: Centered flat icon with simple tooltip
             return (
               <div key={item.id} className="relative group flex justify-center">
                 <button
                   onClick={() => setCurrentTab(item.id)}
-                  className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all relative ${
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
                     isActive
-                      ? 'bg-gradient-to-tr from-purple-500/25 via-fuchsia-500/20 to-indigo-500/20 text-fuchsia-300 border border-purple-500/60 shadow-glow-synth'
-                      : 'text-slate-400 hover:text-purple-200 hover:bg-[#18112E] border border-transparent'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-slate-400 hover:text-white hover:bg-[#1e293b]'
                   }`}
                 >
-                  <Icon
-                    className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110 ${
-                      isActive ? 'text-fuchsia-400' : 'text-slate-400 group-hover:text-purple-300'
-                    }`}
-                  />
-                  {isActive && (
-                    <span className="absolute -right-1 top-1/2 -translate-y-1/2 w-1.5 h-4 rounded-l bg-fuchsia-400 shadow-[0_0_8px_#E879F9]" />
-                  )}
+                  <Icon className="w-4 h-4" />
                 </button>
 
-                {/* Floating Modern Tooltip on Hover */}
-                <div className="absolute left-16 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 pl-2">
-                  <div className="px-3 py-1.5 rounded-lg bg-[#160E2A] border border-purple-500/40 text-purple-200 text-xs font-mono whitespace-nowrap shadow-2xl flex items-center gap-1.5">
-                    <span>{item.label}</span>
+                {/* Flat Tooltip on Hover */}
+                <div className="absolute left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150 pl-2">
+                  <div className="px-2.5 py-1 rounded bg-[#1e293b] border border-[#334155] text-slate-200 text-xs font-medium whitespace-nowrap shadow-md">
+                    {item.label}
                   </div>
                 </div>
               </div>
             );
           }
 
-          // Expanded Mode: Full width row with text and active pill
+          // Expanded Mode: Clean flat row
           return (
             <button
               key={item.id}
@@ -164,52 +154,44 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 setCurrentTab(item.id);
                 setIsMobileOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-medium transition-all group relative ${
+              className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-xs font-medium transition-colors ${
                 isActive
-                  ? 'bg-gradient-to-r from-purple-500/20 via-fuchsia-500/15 to-transparent text-purple-100 border border-purple-500/50 shadow-glow-synth font-semibold'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-[#18112E] border border-transparent'
+                  ? 'bg-blue-600 text-white font-semibold'
+                  : 'text-slate-400 hover:text-slate-200 hover:bg-[#1e293b]'
               }`}
             >
-              <Icon
-                className={`w-5 h-5 flex-shrink-0 transition-colors ${
-                  isActive ? 'text-fuchsia-400' : 'text-slate-400 group-hover:text-purple-300'
-                }`}
-              />
+              <Icon className={`w-4 h-4 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-400'}`} />
               <span className="truncate">{item.label}</span>
-              {isActive && (
-                <span className="ml-auto w-1.5 h-1.5 rounded-full bg-fuchsia-400 shadow-[0_0_8px_#E879F9]" />
-              )}
             </button>
           );
         })}
       </div>
 
-      {/* Footer Status Guard */}
+      {/* Flat Footer Status */}
       {isExpanded ? (
-        <div className="p-3 m-3 rounded-xl bg-[#140E29] border border-[#2E1E54] text-[11px] font-mono space-y-1.5">
+        <div className="p-3 m-3 rounded-lg bg-[#111827] border border-[#1e293b] text-[11px] font-mono space-y-1.5">
           <div className="flex items-center justify-between text-slate-400">
             <span>SSRF GUARD:</span>
-            <span className="text-emerald-400 font-semibold">ACTIVE</span>
+            <span className="text-emerald-400 font-medium">ACTIVE</span>
           </div>
           <div className="flex items-center justify-between text-slate-400">
             <span>SAFE MODE:</span>
-            <span className="text-purple-400 font-semibold">ENFORCED</span>
+            <span className="text-blue-400 font-medium">ENFORCED</span>
           </div>
-          <div className="pt-1 border-t border-[#2E1E54] text-[9px] text-slate-500 flex items-center gap-1">
-            <Radio className="w-3 h-3 text-fuchsia-500 animate-pulse" />
-            <span>Synthwave Scope Guard</span>
+          <div className="pt-1 border-t border-[#1e293b] text-[10px] text-slate-500 flex items-center gap-1.5">
+            <Radio className="w-3 h-3 text-emerald-400" />
+            <span>Operational Guardrails</span>
           </div>
         </div>
       ) : (
-        <div className="p-3 mb-3 flex flex-col items-center gap-2">
+        <div className="p-3 mb-2 flex flex-col items-center gap-2">
           <button
             onClick={() => setCollapsed(false)}
-            className="w-10 h-10 rounded-xl bg-[#140E29] border border-[#2E1E54] flex items-center justify-center text-slate-400 hover:text-white hover:border-purple-500/40 transition-colors"
+            className="w-8 h-8 rounded-lg bg-[#111827] border border-[#1e293b] flex items-center justify-center text-slate-400 hover:text-white transition-colors"
             title="Expand Sidebar"
           >
-            <ChevronRight className="w-4 h-4 text-purple-400" />
+            <ChevronRight className="w-4 h-4" />
           </button>
-          <div className="w-2.5 h-2.5 rounded-full bg-fuchsia-400 animate-pulse" title="Security Guards Enforced" />
         </div>
       )}
     </div>
@@ -235,7 +217,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsMobileOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-sm"
+              className="fixed inset-0 bg-black/60"
             />
             <motion.div
               initial={{ x: -280 }}

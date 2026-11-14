@@ -97,16 +97,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
       className="space-y-6"
     >
       {/* Quick Action Command Strip */}
-      <div className="p-4 rounded-xl bg-gradient-to-r from-[#170E30] via-[#1E1340] to-[#170E30] border border-purple-500/30 shadow-glow-synth flex flex-wrap items-center justify-between gap-4">
+      <div className="p-4 rounded-lg bg-[#111827] border border-[#1e293b] flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-lg bg-purple-500/15 text-fuchsia-400 border border-purple-500/35">
+          <div className="p-2.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Zap className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-sm font-bold font-heading text-white tracking-wide">
+            <h3 className="text-sm font-bold text-white tracking-wide">
               AppSec Command Center
             </h3>
-            <p className="text-xs text-purple-300/70">
+            <p className="text-xs text-slate-400">
               Active automated vulnerability intelligence & surface discovery
             </p>
           </div>
@@ -115,14 +115,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
         <div className="flex items-center gap-2">
           <button
             onClick={() => onNavigate('targets')}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#221747] hover:bg-[#2B1D59] text-purple-200 text-xs font-semibold border border-purple-500/40 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1e293b] hover:bg-[#334155] text-slate-200 text-xs font-medium border border-[#334155] transition-colors"
           >
-            <Crosshair className="w-3.5 h-3.5 text-fuchsia-400" />
+            <Crosshair className="w-3.5 h-3.5 text-blue-400" />
             <span>Add Target</span>
           </button>
           <button
             onClick={onOpenNewScan}
-            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-500 hover:to-fuchsia-500 text-white text-xs font-bold uppercase tracking-wider transition-all shadow-glow-synth"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium uppercase tracking-wider transition-colors"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Launch Scan</span>
@@ -161,13 +161,13 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
             </p>
             <button
               onClick={() => onNavigate('targets')}
-              className="text-xs text-purple-400 hover:text-purple-300 font-medium mt-2 flex items-center gap-1"
+              className="text-xs text-blue-400 hover:text-blue-300 font-medium mt-2 flex items-center gap-1"
             >
               <span>Scope Inventory</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
           </div>
-          <div className="p-3.5 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/25">
+          <div className="p-3.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Crosshair className="w-6 h-6" />
           </div>
         </div>
@@ -182,11 +182,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
               {stats?.completed_scans || 0}
             </p>
             <p className="text-xs text-slate-400 mt-2 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-blue-400" />
               <span>{stats?.running_scans || 0} active currently</span>
             </p>
           </div>
-          <div className="p-3.5 rounded-xl bg-fuchsia-500/10 text-fuchsia-400 border border-fuchsia-500/25">
+          <div className="p-3.5 rounded-lg bg-blue-600/10 text-blue-400 border border-blue-500/20">
             <Activity className="w-6 h-6" />
           </div>
         </div>
@@ -228,7 +228,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
             </div>
             <button
               onClick={() => onNavigate('vulns')}
-              className="text-xs text-purple-400 hover:text-purple-300 font-medium flex items-center gap-1"
+              className="text-xs text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1"
             >
               <span>View Details</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -241,15 +241,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
                 <YAxis stroke="#64748B" fontSize={11} tickLine={false} allowDecimals={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#160F2E',
-                    borderColor: '#2E1E54',
-                    borderRadius: '8px',
+                    backgroundColor: '#111827',
+                    borderColor: '#1e293b',
+                    borderRadius: '6px',
                     fontSize: '12px',
                     color: '#F8FAFC'
                   }}
-                  cursor={{ fill: 'rgba(192, 132, 252, 0.05)' }}
+                  cursor={{ fill: 'rgba(59, 130, 246, 0.05)' }}
                 />
-                <Bar dataKey="count" radius={[6, 6, 0, 0]}>
+                <Bar dataKey="count" radius={[4, 4, 0, 0]}>
                   {stats?.severity_distribution.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.fill} />
                   ))}
@@ -263,7 +263,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
         <div className="cyber-card p-5">
           <div className="mb-4">
             <h3 className="text-sm font-bold font-heading text-white uppercase tracking-wider flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-purple-400" />
+              <TrendingUp className="w-4 h-4 text-blue-400" />
               <span>Posture Trajectory</span>
             </h3>
             <p className="text-xs text-slate-400">Security score progression across scans</p>
@@ -273,21 +273,21 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
               <AreaChart data={trendData}>
                 <defs>
                   <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#C084FC" stopOpacity={0.4}/>
-                    <stop offset="95%" stopColor="#C084FC" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <XAxis dataKey="name" stroke="#64748B" fontSize={10} tickLine={false} />
                 <YAxis domain={[0, 100]} stroke="#64748B" fontSize={10} tickLine={false} />
                 <Tooltip
                   contentStyle={{
-                    backgroundColor: '#160F2E',
-                    borderColor: '#2E1E54',
-                    borderRadius: '8px',
+                    backgroundColor: '#111827',
+                    borderColor: '#1e293b',
+                    borderRadius: '6px',
                     fontSize: '11px'
                   }}
                 />
-                <Area type="monotone" dataKey="score" stroke="#C084FC" strokeWidth={2.5} fillOpacity={1} fill="url(#scoreGradient)" />
+                <Area type="monotone" dataKey="score" stroke="#3b82f6" strokeWidth={2} fillOpacity={1} fill="url(#scoreGradient)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -305,7 +305,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
           </div>
           <button
             onClick={() => onNavigate('history')}
-            className="text-xs text-purple-400 hover:text-purple-300 font-medium flex items-center gap-1"
+            className="text-xs text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1"
           >
             <span>All History</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -320,7 +320,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-[#2E1E54] text-slate-400 font-mono uppercase text-[10px]">
+                <tr className="border-b border-[#1e293b] text-slate-400 font-mono uppercase text-[10px]">
                   <th className="pb-3 px-3">Target Scope</th>
                   <th className="pb-3 px-3">Scan Type</th>
                   <th className="pb-3 px-3">Status</th>
@@ -330,15 +330,15 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
                   <th className="pb-3 px-3 text-right">Details</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#2E1E54]/60 font-sans">
+              <tbody className="divide-y divide-[#1e293b] font-sans">
                 {stats.recent_scans.map((scan) => (
-                  <tr key={scan.id} className="hover:bg-[#1A1136]/50 transition-colors">
+                  <tr key={scan.id} className="hover:bg-[#1e293b]/50 transition-colors">
                     <td className="py-3 px-3">
                       <div className="font-semibold text-slate-200">{scan.target_name}</div>
-                      <div className="text-[11px] text-purple-300/70 font-mono truncate max-w-[200px]">{scan.target_url}</div>
+                      <div className="text-[11px] text-slate-400 font-mono truncate max-w-[200px]">{scan.target_url}</div>
                     </td>
                     <td className="py-3 px-3">
-                      <span className="font-mono text-purple-300 bg-purple-500/15 px-2 py-0.5 rounded border border-purple-500/30 text-[10px]">
+                      <span className="font-mono text-slate-300 bg-[#1e293b] px-2 py-0.5 rounded border border-[#334155] text-[10px]">
                         {scan.scan_type}
                       </span>
                     </td>
@@ -362,7 +362,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenNewScan 
                     <td className="py-3 px-3 text-right">
                       <button
                         onClick={() => onNavigate('history')}
-                        className="text-purple-400 hover:text-purple-300 font-mono text-xs hover:underline"
+                        className="text-blue-400 hover:text-blue-300 font-mono text-xs hover:underline"
                       >
                         Telemetry →
                       </button>
