@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120" fill="none">
+  <!-- Flat Dark Container -->
+  <rect width="520" height="120" rx="16" fill="#0d121f" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Brand Icon Group (Left aligned) -->
+  <g transform="translate(32, 20)">
+    <!-- Outer Sentinel Hex-Shield -->
+    <path
+      d="M40 4L72 17.5V39C72 58.5 58.5 70.8 40 76.5C21.5 70.8 8 58.5 8 39V17.5L40 4Z"
+      fill="#111827"
+      stroke="#2563eb"
+      stroke-width="3"
+      stroke-linejoin="round"
+    />
+    <!-- Inner Dark Plate -->
+    <path
+      d="M40 13L61 22.8V37.8C61 52 51.5 61.5 40 66.5C28.5 61.5 19 52 19 37.8V22.8L40 13Z"
+      fill="#1e293b"
+    />
+    <!-- Bold Sharp Cyber 'V' -->
+    <path
+      d="M26.5 27L40 51.5L53.5 27H46L40 38.5L34 27H26.5Z"
+      fill="#3b82f6"
+    />
+    <!-- Precision Target Node -->
+    <circle cx="40" cy="23" r="3.5" fill="#93c5fd" />
+    <circle cx="40" cy="23" r="1.5" fill="#ffffff" />
+  </g>
+
+  <!-- Typography Group -->
+  <g transform="translate(132, 26)">
+    <!-- Main Title -->
+    <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif" font-size="34" font-weight="900" letter-spacing="1.5">
+      <tspan fill="#f8fafc">VULN</tspan><tspan fill="#3b82f6">SCAN</tspan>
+    </text>
+
+    <!-- Subtitle / Tagline -->
+    <text x="2" y="60" font-family="'JetBrains Mono', 'Fira Code', 'Courier New', monospace" font-size="11" font-weight="600" fill="#94a3b8" letter-spacing="2.5">
+      SECOPS INTELLIGENCE PLATFORM
+    </text>
+
+    <!-- Status Badge -->
+    <g transform="translate(262, 14)">
+      <rect width="86" height="22" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+      <circle cx="10" cy="11" r="3" fill="#10b981"/>
+      <text x="20" y="15" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="700" fill="#34d399" letter-spacing="1">LIVE DAST</text>
+    </g>
+  </g>
+</svg>

@@ -2,6 +2,11 @@
 
 <div align="center">
 
+<img src="docs/logo.svg" alt="VulnScan SecOps Intelligence Platform" width="480" />
+
+<br/>
+<br/>
+
 ![VulnScan Badge](https://img.shields.io/badge/VULNSCAN-SecOps%20Platform-2563EB?style=for-the-badge&logo=shield&logoColor=white)
 
 **Automated Web Vulnerability Assessment, AI/ML Posture Intelligence & Safe DAST Engine**
