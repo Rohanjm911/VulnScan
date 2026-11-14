@@ -90,9 +90,9 @@ def receive_shutdown_signal():
     shutdown_scheduled = True
 
     def delayed_exit_check():
-        time.sleep(2.0)
+        time.sleep(6.0)
         # If no new heartbeat was received during the grace period (i.e. not a refresh, but actual tab close)
-        if shutdown_scheduled and (time.time() - last_heartbeat_time >= 1.8):
+        if shutdown_scheduled and (time.time() - last_heartbeat_time >= 5.5):
             execute_server_exit()
 
     threading.Thread(target=delayed_exit_check, daemon=True).start()
@@ -101,12 +101,12 @@ def receive_shutdown_signal():
 def background_heartbeat_watchdog():
     global last_heartbeat_time, has_received_heartbeat
     # Initial grace window for user to launch browser and load page
-    time.sleep(12)
+    time.sleep(30)
     while True:
-        time.sleep(2.5)
+        time.sleep(5)
         if has_received_heartbeat:
-            # If site was connected and no heartbeat has been sent for 8 seconds, browser was closed
-            if time.time() - last_heartbeat_time > 8.0:
+            # Modern browsers throttle background tab timers to 60s; 90s grace prevents false shutdown
+            if time.time() - last_heartbeat_time > 90.0:
                 execute_server_exit()
                 break
 
